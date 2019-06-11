@@ -22,7 +22,7 @@ void bfs(int s)
 			int next = friends[cur][k];
 			if (visit[next] == 0) {
 				visit[next] = 1;
-				cnt[next] = cnt[cur] + 1; //ÃÌ¼ö Áõ°¡
+				cnt[next] = cnt[cur] + 1; //ì´Œìˆ˜ ì¦ê°€
 				q.push(next);
 			}
 		}
@@ -38,7 +38,8 @@ int main()
 	for (int j = 0; j < m; j++) {
 		int u, v;
 		cin >> u >> v;
-		friends[u].push_back(v); //¾ç¹æÇâ
+		/* ì–‘ë°©í–¥ ê·¸ë˜í”„ë¡œ */
+		friends[u].push_back(v);
 		friends[v].push_back(u);
 	}
 
