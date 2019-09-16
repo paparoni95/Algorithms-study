@@ -1,8 +1,9 @@
 #include <iostream>
 using namespace std;
 
-int d[1001]; // d[i] = 2 * i¸¦ Ã¤¿ì´Â ¹æ¹ıÀÇ ¼ö
+int d[1001]; // d[i] = 2 * i ì„ ì±„ìš°ëŠ” ë°©ë²•ì˜ ìˆ˜
 
+// top - down í˜•ì‹
 int solution(int n) {
 	if (n == 1) return 1;
 	if (n == 2) return 2;
