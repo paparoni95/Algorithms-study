@@ -1,8 +1,9 @@
 #include <iostream>
 using namespace std;
 
-int d[1001]; // d[i] : 2 * i¸¦ Ã¤¿ì´Â ¹æ¹ýÀÇ ¼ö
+int d[1001]; // d[i] : 2 * i ì„ ì±„ìš°ëŠ” ë°©ë²•ì˜ ìˆ˜
 
+// bottom-up 
 int main() {
 	int n;
 	cin >> n;
