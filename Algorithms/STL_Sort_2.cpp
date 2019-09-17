@@ -3,8 +3,8 @@
 using namespace std;
 
 bool compare(int a, int b) {
-	return a > b; // ³»¸²Â÷¼ø
-	//return a < b; // ¿À¸§Â÷¼ø
+	return a > b; // ë‚´ë¦¼ì°¨ìˆœ
+	//return a < b; // ì˜¤ë¦„ì°¨ìˆœ
 }
 
 int main() {
