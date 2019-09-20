@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-// 2*N Ÿ�ϸ�2 (BOJ 11727)
+// 2*N 타일링 2 (BOJ 11727)
 
 int memo[1001];
 
