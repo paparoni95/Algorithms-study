@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-// Å¸ÀÏ Ã¤¿ì±â (BOJ 2133)
+// íƒ€ì¼ ì±„ìš°ê¸° (BOJ 2133)
 
 int memo[1001];
 
