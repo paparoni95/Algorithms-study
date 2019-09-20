@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-// 2*N Å¸ÀÏ¸µ ¹®Á¦ (BOJ 11726)
+// 2*N íƒ€ì¼ë§ (BOJ 11726)
 int memo[1001];
 
 int dp(int x) {
