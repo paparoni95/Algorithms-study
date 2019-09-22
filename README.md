@@ -11,3 +11,8 @@
   *[메일코딩](https://mailprogramming.com/)
   
   *[프로그래머스](https://programmers.co.kr/)
+  
+  *[안경잡이개발자](https://blog.naver.com/ndb796/)
+  
+  *[라이](https://blog.naver.com/kks227/)
+  
