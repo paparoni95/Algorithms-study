@@ -39,16 +39,16 @@ void bfs(int x, int y)
 
 int main()
 {
-	/* ÀÔ·Â */
+	/* ìž…ë ¥ */
 	cin >> row >> col;
 	for (int i = 1; i <= row; i++)
 		for (int j = 1; j <= col; j++)
 			scanf("%1d", &a[i][j]);
 
-	/* Å½»ö */
+	/* íƒìƒ‰ */
 	bfs(1, 1);
 
-	/* Ãâ·Â */
+	/* ì¶œë ¥ */
 	cout << a[row][col];
 	return 0;
 }
