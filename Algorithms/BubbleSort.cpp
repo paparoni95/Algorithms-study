@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
 
+// 버블 정렬
+// O(N^2)
 int main() {
 	int i, j, temp;
 	int arr[10] = { 1,10,5,8,7,6,4,3,2,9 };
