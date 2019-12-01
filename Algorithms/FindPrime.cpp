@@ -1,14 +1,16 @@
 #include <iostream>
 using namespace std;
 
-// ÇÏ³ªÀÇ ¼ýÀÚ°¡ ¼Ò¼öÀÎÁö ÆÇº°ÇÏ´Â ¾Ë°í¸®Áò
-// ½Ã°£ º¹Àâµµ O(N^(1/2))
-// 2 * 4 = 4 * 2¿Í °°Àº ½ÄÀ¸·Î ´ëÄªÀ» ÀÌ·ç±â ¶§¹®¿¡
-// Æ¯Á¤ÇÑ ¼ýÀÚÀÇ Á¦°ö±Ù±îÁö¸¸ ¾à¼öÀÇ ¿©ºÎ¸¦ °ËÁõÇÏ¸é µÈ´Ù.
+// í•˜ë‚˜ì˜ ìˆ«ìžê°€ ì†Œìˆ˜ì¸ì§€ íŒë³„í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜
+
+// ì‹œê°„ ë³µìž¡ë„ O(sqrt(N))
+// 2 * 4 = 4 * 2ì™€ ê°™ì€ ì‹ìœ¼ë¡œ ëŒ€ì¹­ì„ ì´ë£¨ê¸° ë•Œë¬¸ì—
+// íŠ¹ì •í•œ ìˆ«ìžì˜ ì œê³±ê·¼ê¹Œì§€ë§Œ ì•½ìˆ˜ì˜ ì—¬ë¶€ë¥¼ ê²€ì¦í•˜ë©´ ëœë‹¤.
 
 bool isPrimeNumber(int x) {
 	for (int i = 2; i * i <= x; i++) {
-		if (x % i == 0)return false;
+		if (x % i == 0)
+		   return false;
 	}
 	return true;
 }
