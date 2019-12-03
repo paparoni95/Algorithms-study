@@ -12,11 +12,11 @@ int main()
 	for (int i = 0; i < n; i++)
 		cin >> num[i];
 
-	vector<int> operation(4); // +,-,*,/ ¼ö·®
+	vector<int> operation(4); // +,-,*,/ (ìˆ˜ëŸ‰)
 	for (int i = 0; i < 4; i++)
 		cin >> operation[i];
 
-	vector<int> order; // ¼ø¿­¿¡ »ç¿ëÇÒ ¼ø¼­
+	vector<int> order; // ìˆœì—´ì— ì‚¬ìš©í•˜ê¸° ìœ„í•´ ìˆœì„œì§€ì •
 	int temp = 0;
 	for (int i = 0; i < 4; i++)
 	{
