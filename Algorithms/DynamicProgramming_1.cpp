@@ -1,8 +1,8 @@
 #include <iostream>
 using namespace std;
 
-// ´Ü¼øÇÏ°Ô ºĞÇÒ Á¤º¹ ±â¹ıÀ» ÀÌ¿ëÇØ¼­ ÇÇº¸³ªÄ¡ ¼ö¿­À» ±¸ÇÑ´Ù¸é
-// ½Ã°£ º¹Àâµµ O(N^2)
+// ë‹¨ìˆœí•˜ê²Œ ë¶„í•  ì •ë³µ ê¸°ë²•ì„ ì´ìš©í•´ì„œ í”¼ë³´ë‚˜ì¹˜ ìˆ˜ì—´ì„ êµ¬í•œë‹¤ë©´
+// ì‹œê°„ ë³µì¡ë„ O(2^N)
 
 int fibonacci(int x) {
 	if (x == 1) return 1;
@@ -12,6 +12,6 @@ int fibonacci(int x) {
 
 int main() {
 	cout << fibonacci(10) << '\n';
-	//cout << fibonacci(50) << '\n'; ¸¹Àº ½Ã°£ÀÌ ¼Ò¿äµÈ´Ù.
+	//cout << fibonacci(50) << '\n'; ë§ì€ ì‹œê°„ì´ ì†Œìš”ëœë‹¤.
 	return 0;
 }
