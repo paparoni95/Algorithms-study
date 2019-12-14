@@ -1,8 +1,8 @@
-// ÃâÃ³ : ÄÚµù ÀÎÅÍºä ¿ÏÀü ºÐ¼®
+// ì¶œì²˜ : ì½”ë”© ì¸í„°ë·° ì™„ì „ ë¶„ì„
 
-// ¿©·¯°¡Áö °æ¿ì¿¡ ´ëÇÑ Big-O Ç¥±â¹ýÀ» È®ÀÎÇÏÀÚ.
+// ì—¬ëŸ¬ê°€ì§€ ê²½ìš°ì— ëŒ€í•œ Big-O í‘œê¸°ë²•ì„ í™•ì¸í•˜ìž.
 
-// Àç±ÍÀû È£Ãâ : O(2^N)
+// ìž¬ê·€ì  í˜¸ì¶œ : O(2^N)
 int f(int n)
 {
 	if (n <= 1)
@@ -10,8 +10,8 @@ int f(int n)
 	return f(n - 1) + f(n - 1);
 }
 
-// ¹è¿­À» ÀÐÀ» ¶§ : O(N)
-// ÇÑ ¹ø ÀÐµç, µÎ ¹ø ÀÐµç Big-O¿¡´Â ¿µÇâÀ» ÁÖÁö ¾ÊÀ½.
+// ë°°ì—´ì„ ì½ì„ ë•Œ : O(N)
+// í•œ ë²ˆ ì½ë“ , ë‘ ë²ˆ ì½ë“  Big-Oì—ëŠ” ì˜í–¥ì„ ì£¼ì§€ ì•ŠìŒ.
 void foo(int array[])
 {
 	int sum = 0;
@@ -24,7 +24,7 @@ void foo(int array[])
 		product *= array[i];
 }
 
-// 2Áß ·çÇÁ : O(N^2)
+// 2ì¤‘ ë£¨í”„ : O(N^2)
 void printUnorderedPairs(int array[])
 {
 	for (int i = 0; i < array.length; i++)
@@ -32,19 +32,40 @@ void printUnorderedPairs(int array[])
 			printf("%d, %d ", array[i], array[j]);
 }
 
-// 2Áß ·çÇÁ¿¡ Ãß°¡ÀûÀÎ ¿¬»êÀÌ µé¾î°¡¸é? : O(N^2)
+// 2ì¤‘ ë£¨í”„ì— ì¶”ê°€ì ì¸ ì—°ì‚°ì´ ë“¤ì–´ê°€ë©´? : O(N^2)
 void printUnorderedPairs(int array[])
 {
 	for (int i = 0; i < array.length; i++)
 		for (int j = i + 1; j < array.length; j++)
-			/* if ... O(1) ½Ã°£ÀÌ °É¸®´Â ÀÛ¾÷ ...  */
+			/* if ... O(1) ì‹œê°„ì´ ê±¸ë¦¬ëŠ” ìž‘ì—… ...  */
 }
 
-// 2Áß ·çÇÁÀÌÁö¸¸ ½Ç¼öÇÏ´Â °æ¿ì : O(AB)
-// µÎ ¹è¿­ÀÇ Å©±â¸¦ ¸ðµÎ °í·ÁÇØ¾ß ÇÑ´Ù.
+// 2ì¤‘ ë£¨í”„ì´ì§€ë§Œ ì‹¤ìˆ˜í•˜ëŠ” ê²½ìš° : O(AB)
+// ë‘ ë°°ì—´ì˜ í¬ê¸°ë¥¼ ëª¨ë‘ ê³ ë ¤í•´ì•¼ í•œë‹¤.
 void printUnorderedPairs(int A[], int B[])
 {
 	for(int i = 0; i < A.size(); i++)
 		for(int j = 0; j < B.size(); j++)
-			/* ¿¬»ê */
+			/* ì—°ì‚° */
+}
+
+// O(AB)
+void printUnorderedPairs(int A[], int B[])
+{
+	for(int i = 0; i < A.size(); i++)
+		for(int j = 0; j < B.size(); j++)
+			for(int k = 0; k < 100000; k++)
+				/* ì—°ì‚° */
+}
+
+// O(N)
+void reverse(int arr[])
+{
+	for(int i = 0; i < array.size() / 2; i++)
+	{
+		int other = array.size - i - 1;
+		int temp = array[i];
+		array[i] = array[other];
+		array[other] = temp;
+	}
 }
