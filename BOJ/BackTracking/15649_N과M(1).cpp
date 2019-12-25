@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-int a[9]; // ¼±ÅÃÇÑ ¼ıÀÚ¸¦ ´ãÀ» °ø°£
+int a[9]; // ì„ íƒí•œ ìˆ«ìë¥¼ ë‹´ì„ ê³µê°„
 bool check[9];
 int n, m;
 
