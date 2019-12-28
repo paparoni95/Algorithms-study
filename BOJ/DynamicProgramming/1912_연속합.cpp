@@ -3,7 +3,7 @@
 using namespace std;
 
 int a[100001];
-int d[100001]; // d[i] : a[1] ~ a[i]±îÁöÀÇ ¿¬¼ÓÇÕ ÃÖ´ë
+int d[100001]; // d[i] : a[1] ~ a[i]ê¹Œì§€ì˜ ì—°ì†í•© ìµœëŒ€
 int n;
 
 int main()
