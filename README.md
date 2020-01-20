@@ -5,8 +5,7 @@
 * 여기서의 내용은 알고리즘이여도 되고, 알고리즘을 풀 때 사용한 함수나 문법의 경험, 자료구조도 작성한다.
 * 지금은 못하더라도 조급해지지 않고 꾸준히 열심히 하자!
 
-[namjunemy]님의 Github를 보고 나 역시 조금씩이나마 기록을 남기고자 시작했다.
-[namjunemy]: https://github.com/namjunemy/TIL
+작성하게 된 계기는 [namjunemy](https://github.com/namjunemy/TIL)의 Github를 보고 나도 작성하기로 했다.
 
 # 다짐
 * 중요한 것은 모르는 부분을 찾고자 할 때, 추가적인 검색의 비용이 들지 않도록 자세히 기록한다.
@@ -14,8 +13,7 @@
 * 어려워도 포기하지 말고 해보자.
 
 # Algorithm
-# C
-# C++
+# C, C++
 ## 1. String
 ### 1.1. string::find 와 string::npos
 `string::find` 찾는 문자열의 첫 번째 인덱스를 반환하는 함수 <br>
