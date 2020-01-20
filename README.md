@@ -19,8 +19,7 @@
 `string::find` 찾는 문자열의 첫 번째 인덱스를 반환하는 함수 <br>
 `string::npos` 찾는 문자열이 없는 경우에는 `string::npos`를 반환한다. <br>
 
-<pre>
-<code>
+```cpp
 string str = "Hello World";
 if(str.find("World") != string::npos)
 {
@@ -30,8 +29,7 @@ else
 {
   cout << "찾는 문자열이 없습니다." << endl;
 }
-</code>
-</pre>
+```
 
 
   
