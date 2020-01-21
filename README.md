@@ -120,7 +120,7 @@ Stack에 저장된 자료는 `선형구조`를 가진다. <br>
 * 스택의 push와 pop을 하는 과정
 
 ![stack](https://images.velog.io/post-images/ollabu3/9c1b6840-2a7a-11ea-b060-3102f9b60d17/%EC%8A%A4%ED%83%9DIMG.PNG) <br>
-출처: https://velog.io/@ollabu3/codestates-immersive-TIL-2 <
+출처: https://velog.io/@ollabu3/codestates-immersive-TIL-2
 
 * push의 슈도코드
 
@@ -132,6 +132,7 @@ push(s, x)
         overflow;
    else
         s[top] <- x;
+}
 end push()
 ```
 
@@ -148,10 +149,186 @@ pop(s)
         top <- top - 1;
    }
 }
+end pop()
 ```
 
 ### 2.3. Stack의 응용
+1. 괄호검사
+  - 왼쪽 괄호의 개수와 오른쪽 괄호의 개수가 같아야한다.
+  - 괄호의 종류는 `()` `{}` `[]` 가 있다.
+  - 괄호의 짝을 검사할 때 `Stack`을 이용할 수 있다.
+  - 동작 방식은 문자열에 있는 괄호를 차례대로 하나씩 확인하면서, 여는 괄호이면 stack에 push한다.
+  - 닫는 괄호이면 stack의 top에 있는 괄호와 비교해서 맞으면 pop한다.
+  - pop을 할 때 이미 stack이 비어있거나, 괄호의 짝이 맞지 않거나, pop을 한 후에 문자열이 끝나게 되고 stack에 남아있다면 실패한다.
 
+2. 함수호출
+  - 가장 마지막에 호출된 함수가 가장 먼저 실행을 완료하고 복귀하는 후입선출 구조이므로 이를 `stack`을 이용해서 수행순서를 관리한다.
+  - 함수 호출이 발생하면 호출할 함수 수행에 필요한 `지역변수`, `매개변수` 및 수행후 복귀할 `복귀주소`의 정보를 stack 프레임에 저장한다.
+  - 함수의 실행이 끝나게 되면 시스템 stack의 top 원소를 pop하면서 stack 프레임에 저장되어있던 복귀주소를 확인하고 복귀한다.
+  - 함수 호출과 복귀에 따라 이 과정을 반복하면서 전체 프로그램 수행이 종료되면 시스템 stack은 공백상태가 된다.
+
+3. 재귀호출
+  - 자기 자신을 호출하여 순환 수행된다.
+  - 일반적으로 재귀호출을 이용해서 구현하면 가독성이 높아지며, 프로그램의 크기가 줄어들게 된다.
+  - 다만, 디버깅이 어려우며 잘못 작성하게 되면 수행 시간이 많이 소요된다. (깊이가 깊어지게 되면 `stack overflow`가 발생한다.)
+  - 재귀호출의 대표적인 것은 `factorial`구현이다.
+
+4. Memoization
+  - 일반적으로 `피보나치 수열`을 구현할 때, 재귀호출을 이용해서 구현할 수 있다. (다만, 중복 호출이라는 문제점이 생기게 된다.)
+  
+  ```cpp
+  fibo(n)
+  {
+        if(n == 0) then return 0;
+        if(n == 1) then return 1;
+        else return fibo(n-1) + fibo(n-2);
+  }
+  end fibo()
+  ```
+  
+  - 위 코드의 문제점은 함수를 한 번 호출할 때마다, 내부적으로 2번의 함수를 호출한다.
+  - 이는 호출의 깊이가 깊어질수록 중복 호출이 발생하게 된다.
+  ![fibonacci](https://www.cs.cmu.edu/~adamchik/15-121/lectures/Recursions/pix/fib.bmp) <br>
+  출처 : http://1ambda.github.io/data-analysis/intro-to-data-science-3/ <br>
+  - 한 번 호출할 때마다, 내부적으로 2번을 하므로 결국 시간복잡도는 `O(2^N)`이 되게 된다.
+  - 이를 해결하기 위한 solution은 `Memoization`이다.
+  
+  - Memoization의 핵심은 한 번 구한 답은 메모해놓고, 다시 계산하지 않도록 전체적인 실행속도를 빠르게 하는 기술이다.
+  - 이는 DP(동적계획법)에서 쓰이는 테크닉이다.
+  - Memoization을 이용해 다시 피보나치 수열을 구현하면 아래와 같다.
+  
+  ```cpp
+  memset(memo, -1, sizeof(memo));
+  memo[0] = 0, memo[1] = 1;
+  fibo(n)
+  {
+        if(memo[n] == -1)
+                memo[n] = fibo(n-1) + fibo(n-2);
+        else
+                return memo[n];
+  }
+  ```
+   - 이처럼 기존에 계산하여 저장된 값이 있는 경우에는 다시 계산하지 않고 저장된 메모리에서 값을 찾아 쓰기만 하면 된다.
+
+5. DFS(깊이우선탐색)
+   - 그래프 알고리즘 중 하나이다.
+   - 이 알고리즘에서 `stack`은 현재 정점에서 다음 정점으로 갈 곳이 없다면, 기존으로 돌아가기위해 기록하는 역할을 한다.
+   - 동작 방식은 다음과 같다.
+   - 시작 정점의 한 방향으로 갈 수 있는 경로가 있는 곳까지 깊이 있게 탐색한다.
+   - 더 이상 갈 곳이 없게 되면, 가장 마지막에 왔던 길로 되돌아간다. (스택을 사용하는 이유)
+   - 다른 방향의 정점으로 탐색을 계속 반복하여 결국 모든 정점을 방문하는 원리이다.
+   - 더 자세한 내용은 따로 분류해서 작성한다.
+
+## 3. DP (동적계획법, Dynamic Programming)
+그리디 알고리즘 설계 기법과 같이 최적화 문제를 해결하는 알고리즘 설계기법이다. <br><br>
+입력의 크기가 작은 부분 문제들을 모두 해결한 후에 그 해들을 이용해서 보다 큰 크기의 부분 문제들을 해결하여 결국에 최종적으로 구해야하는 문제를 해결하는 기법이다. <br><br>
+
+핵심은 풀었던 답을 이용해서 더 큰 문제를 해결하는 기법이다. <br>
+
+### 3.1. Overlapping Subproblem
+**`중복되는 부분문제`여야 한다.** <br>
+피보나치 수열에서의 중복되는 부분문제는 다음과 같다.<br>
+
+    fibo(5) = fibo(4) + fibo(3)
+    fibo(4) = fibo(3) + fibo(2)
+    fibo(3) = fibo(2) + fibo(1)
+    fibo(2) = fibo(1) + fibo(0)
+ 
+### 3.2. Optimal Substructure
+**문제의 정답을 작은 문제의 정답에서 구할 수 있다.** <br>
+기존에 `fibo(3)`과 `fibo(2)`를 구했으면 `fibo(4)`를 구할 때 이용할 수 있다. <br>
+여기에서 사용하는 테크닉은 `Memoization`이다. <br>
+한 번 구한 답은 다시 구할 필요가 없으며, 구한 답을 이용해서 문제를 해결하는 기술이다. <br>
+
+### 3.3. DP 구현방식
+`Top-down`과 `bottom-up`방식이 있다.
+
+### 3.3.1 Top-down
+`stack`이나 `recursive`방식을 이용해서 구현한다. <br>
+다만 문제는, 깊이가 깊어지게 되면 `overflow`가 발생할 수 있다. <br>
+
+* 기존에 문제가 되었던 피보나치 수열을 재귀로 푼 방식
+
+```cpp
+#include <stdio.h>
+
+int fibo(int n) {
+	if (n == 1) return 1; //fibo(1)
+	if (n == 2) return 2; //fibo(2)
+	return fibo(n - 1) + fibo(n - 2); //fibo(3)이상
+}
+
+int main() {
+	printf("%d\n", fibo(5));
+	return 0;
+}
+```
+
+* Memoization 기법을 이용해서 조금 더 효율적으로 작성한 방식
+
+```cpp
+#include <stdio.h>
+
+int memo[100]; //푼 답을 저장할 공간
+
+int fibo(int n) {
+	if (n == 1) return 1;
+	if (n == 2) return 2;
+    /* 이미 문제를 푼 답이 있다면? */
+	if (memo[n] > 0) return memo[n];
+    /* 처음 보는 문제이면 */ 
+	else {
+		memo[n] = fibo(n - 1) + fibo(n - 2);
+		return memo[n];
+	}
+}
+
+int main() {
+	printf("%d\n", fibo(45)); //아까는 fibo(5)를 구했지만, fibo(45)도 구할 수 있다.
+	return 0;
+}
+```
+이렇게 구현함으로써 얻을 수 있는 성능의 이점은 다음과 같다. <br>
+기존에 함수를 한 번 호출하면 2번이 호출되어 시간복잡도 `O(2^N)`이였다면, Memoization을 이용하여 `O(N)`으로 단축했다.<br>
+
+### 3.3.2. Bottom-up
+재귀적으로 구현하는 것보다 반복적 구조를 이용해서 구현하면 성능면에서 보다 효율적이다.
+
+```cpp
+#include <stdio.h>
+
+int memo[100]; //푼 답을 저장하는 공간
+
+int fibo(int n) {
+	memo[1] = 1; //fibo(1)
+	memo[2] = 2; //fibo(2)
+	for (int i = 3; i <= n; i++) {
+		/* 차근차근 아래의 작은 문제부터 푼다.*/
+		memo[i] = memo[i - 1] + memo[i - 2];
+	}
+	return memo[n]; //구하려고 하는 fibo(n)
+}
+
+int main() {
+	printf("%d\n", fibo(45));
+	return 0;
+}
+```
+
+### 3.4. DP VS Divide & Conquer
+DP | Divide & Conquer
+---|---
+문제가 -1로 줄어듬 | 문제가 절반으로 줄어듬
+결과가 여러 번 사용 | 결과가 한 번 사용
+결과 재사용이 성능 향상됨 | 분할이 성능 향상됨
+
+### 3.5. DP tip
+중요한 것은 `점화식`을 세워야 한다. <br>
+이 점화식을 이용해서 테이블을 차곡차곡 쌓아서 나중에 더 큰 문제를 해결하는 방식이기 때문이다. <br>
+또한, 점화식을 이용해서 다음의 해를 구할 수 있다. <br>
+그러나 다음의 해에서 알 수 없는 것은 변수를 추가적으로 둬서 `BruteForce` 방식으로 접근하는 법도 있다. <br>
+
+  
 # C, C++
 ## 1. String
 ### 1.1. string::find 와 string::npos
