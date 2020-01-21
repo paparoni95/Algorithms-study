@@ -11,8 +11,8 @@ int main()
 
 		string str1, str2;
 		int answer = 0;
-		cin >> str1; // ÆĞÅÏ ¹®ÀÚ¿­
-		cin >> str2; // ÀÔ·Â ¹®ÀÚ¿­
+		cin >> str1; // ì°¾ì„ íŒ¨í„´
+		cin >> str2; // ì£¼ì–´ì§„ ìŠ¤íŠ¸ë§
 
 		int found = 0;
 		while ((found = str2.find(str1)) != string::npos)
