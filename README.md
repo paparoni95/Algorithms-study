@@ -444,6 +444,61 @@ DP | Divide & Conquer
 또한, 점화식을 이용해서 다음의 해를 구할 수 있다. <br>
 그러나 다음의 해에서 알 수 없는 것은 변수를 추가적으로 둬서 `BruteForce` 방식으로 접근하는 법도 있다. <br>
 
+## 4. Divide & Conquer (분할 정복)
+`분할(Divide)`, `정복(Conquer)`, `통합(Combine)` 각 단계를 거쳐서 문제를 해결하는 기법이다. <br><br>
+`분할(Divide)`은 해결할 문제를 여러 개의 작은 문제들로 나눈다. <br>
+`정복(Conquer)`은 나눈 작은 문제들을 각각 해결한다.<br>
+`통합(Combine)`은 각각 작은 문제들을 해결했으니, 그 해답들을 다시 합친다. <br>
+
+* 분할 정복의 예시
+	- 합병 정렬(Merge Sort)
+	- 퀵 정렬(Quick Sort)
+	- 거듭 제곱(Exponentiation)
+
+### 4.1. 거듭 제곱(Exponentiation)
+일반적으로 2의 2승은 `2^2 = 2x2`를 의미한다. <br>
+거듭 제곱 알고리즘을 단순하게 구현하면 다음과 같다. <br>
+```cpp
+int Power(int Base, int Exponent)
+{
+	int result = 1;
+      
+	if (Exponent == 0) return 1;
+	if (Exponent == 1) return Base;
+	if (Base == 0) return 1;
+
+	for (int i = 0; i < Exponent; i++)
+		result = result * Base;
+
+	return result;
+}
+```
+위의 알고리즘은 시간복잡도가 `O(N)`이 된다. Exponent에 따라서 결정되기 때문이다. <br>
+이를 좀 더 빠르게 할 수 있도록 `분할 정복`기법을 이용해서 해결하면 다음과 같다. <br>
+```cpp
+int Power(int Base, int Exponent)
+{
+	if (Exponent == 0) return 1;
+	if (Exponent == 1) return Base;
+	if (Base == 0) return 1;
+	
+	if (Exponent % 2 == 0)
+	{
+		int temp = Power(Base, Exponent/2);
+		return temp * temp;
+	}
+	else
+	{
+		int temp = Power(Base, (Exponent-1)/2);
+		return temp * temp * Base;
+	}
+}
+```
+위의 알고리즘은 시간복잡도가 `O(logN)`이 된다. <br>
+이유는 한 번 함수를 호출할 때, 구하려고 하는 문제가 두개씩 쪼개지기 때문이다. <br>
+예를 들어서 `2^8`을 구한다고 가정하면 다음과 같다. <br>
+`2^8 = 2x2x2x2x2x2x2x2` 이런식이면 8번을 곱해야지만 구할 수 있지만, <br>
+`2^8 = 2^4 x 2^4 = (2^2 x 2^2) x (2^2 x 2^2) = (2x2) x (2x2) x (2x2) x (2x2)`으로 총 4번의 연산으로 구할 수 있게 된다.
   
 # C, C++
 ## 1. String
