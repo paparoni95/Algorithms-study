@@ -455,6 +455,13 @@ DP | Divide & Conquer
 	- 퀵 정렬(Quick Sort)
 	- 거듭 제곱(Exponentiation)
 
+![Divide&Conquer](https://t1.daumcdn.net/cfile/tistory/99FC283C5C5303501F)<br>
+출처 : https://godgod732.tistory.com/3?category=659135 <br>
+
+분할의 가장 이상적인 경우는 반반씩 나뉘는 것이다. <br>
+이는 분할을 할 때마다 데이터의 크기가 절반으로 줄어드는 것을 의미한다. <br>
+
+
 ### 4.1. 거듭 제곱(Exponentiation)
 일반적으로 2의 2승은 `2^2 = 2x2`를 의미한다. <br>
 거듭 제곱 알고리즘을 단순하게 구현하면 다음과 같다. <br>
@@ -515,7 +522,7 @@ int Power(int Base, int Exponent)
 	-  정렬(Counting Sort)
 	- 기수 정렬(Radix Sort)
 	
-### 5.1. 버블 정렬(Bubble Sort)
+### 5.1. 버블 정렬(Bubble Sort) 안정 정렬
 두 인접한 원소를 검사하여 정렬하는 방법이다. <br>
 시간 복잡도가 상당히 느리지만, 코드가 단순해서 자주 사용된다고 한다. <br>
 원소의 이동이 거품이 수면으로 올라오는 듯한 모습을 보여주기 때문에 `버블`이라고 지어졌다. <br>
@@ -527,10 +534,10 @@ int Power(int Base, int Exponent)
 	- 굉장히 비효율적이다.
 	- 최악이든 최선이든 시간복잡도 `O(N^2)`을 가진다.
 	
-### 5.2. 선택 정렬(Selection Sort)
+### 5.2. 선택 정렬(Selection Sort) 불안정 정렬
 제자리 정렬 알고리즘 중 하나이다. <br>
 주어진 리스트 중에서 최소값을 찾고, 그 값을 맨 앞에 위치한 값과 교체한다. <br>
-맨 처음 위치를 뺀 나머지 리스트를 위와 같은 방법으로 반복한다.
+맨 처음 위치를 뺀 나머지 리스트를 위와 같은 방법으로 반복한다. <br>
 
 * 장점
 	- 구현이 쉽다.
@@ -541,7 +548,7 @@ int Power(int Base, int Exponent)
 	- 역시 시간복잡도 `O(N^2)`를 가진다.
 	- 데이터의 양이 많을수록 오래걸리는 알고리즘이다.
 	
-### 5.3. 삽입 정렬(Insertion Sort)
+### 5.3. 삽입 정렬(Insertion Sort) 안정 정렬
 자료 배열의 모든 요소를 앞에서부터 차례대로 이미 정렬된 배열 부분과 비교해서, 자신의 위치를 찾아 삽입하는 정렬 기법이다. <br>
 이미 `정렬된 부분`과 `정렬되지 않은 부분`으로 나뉜다. <br>
 
@@ -552,8 +559,9 @@ int Power(int Base, int Exponent)
 	- Worst Case의 경우 `O(N^2)`이라는 시간복잡도를 가진다.
 	- 데이터의 양에 따라서 성능의 편차가 심한 정렬 기법이다.
 	
-### 5.4. 병합 정렬(Merge Sort, 합병 정렬)
+### 5.4. 병합 정렬(Merge Sort, 합병 정렬) 안정 정렬
 이 정렬은 `안정 정렬`에 속하며, `분할 정복`알고리즘 중 하나이다. <br>
+분할 정복 기법을 사용한 대표적인 방법이다. <br>
 
 * 장점
 	- 주어진 배열을 반씩 분할해가면서 정렬하는 기법으로 기존 정렬보다는 훨씬 빠르다.
@@ -563,11 +571,10 @@ int Power(int Base, int Exponent)
 	- 추가적인 메모리가 필요하다. (병합 정렬은 임시배열에 주어진 배열을 계속해서 옮겨주면서 정렬하므로)
 	- `O(N^2)`이 걸리는 정렬 기법에 비해서 구현 복잡도가 어렵다.
 	
-### 5.5. 힙 정렬(Heap Sort)
+### 5.5. 힙 정렬(Heap Sort) 불안정 정렬
 최대 힙 트리나 최소 힙 트리를 구성해 정렬을 하는 방법이다. 여기에서는 `힙(Heap)` 자료구조를 기반으로 한다. <br>
 `내림차순`으로 정렬을 위해서는 `Max-Heap`을 구성한다. <br>
 `오름차순`으로 정렬을 위해서는 `Min-Heap`을 구성한다. <br>
-`불안정 정렬`에 속한다. <br>
 
 * 장점
 	- 추가적인 메모리를 사용하지 않으면서 `O(NlogN)`이라는 시간복잡도를 가진다.
@@ -578,7 +585,7 @@ int Power(int Base, int Exponent)
 * 다만 `힙(Heap)` 자체의 장점을 가지고 있다.
 	- 가장 크거나 작은 값을 구할 때 유용하다.
 	
-### 5.6. 퀵 정렬(Quick Sort)
+### 5.6. 퀵 정렬(Quick Sort) 불안정 정렬
 다른 원소와의 비교만으로 정렬을 수행하는 `비교 정렬`에 속한다. <br>
 `합병 정렬`과 비슷하게 주어진 배열을 분할하고, 각각을 정렬하는 방법이다. <br>
 분할할 때, `피벗(Pivot)`을 기준으로 이보다 작은 것은 왼편으로, 큰 것은 오른편에 위치시키면서 정렬한다. <br>
@@ -592,8 +599,60 @@ int Power(int Base, int Exponent)
 * 단점
 	- 정렬된 리스트에 대해서는 퀵 정렬의 불균형 분할에 의해서 오히려 더 수행시간이 오래 걸린다.
 	- Worst Case의 경우 시간복잡도는 `O(N^2)`을 가지게 된다.
+
+** 퀵 정렬 알고리즘 **
+```cpp
+void quickSort(int a[], int begin, int end)
+{
+	if (begin < end)
+	{
+		int p = partition(a, begin, end);
+		quickSort(a, begin, p - 1);
+		quickSort(a, p + 1, end);
+	}
+}
+```
+** 파티션 부분** 
+```cpp
+int partition(int a[], int begin, int end)
+{
+	int pivot = (begin + end) / 2; // 피벗을 잘 선택해야 알고리즘의 성능이 향상으로 이어진다.
+	int l = begin;
+	int r = end;
 	
-출처 : https://gmlwjd9405.github.io/2018/05/10/algorithm-quick-sort.html
+	while(l < r)
+	{
+		while(a[l] < a[pivot] && l < r) // pivot이 가리키는 값보다 큰 값을 찾는 l
+			l++;
+		while(a[r] >= a[pivot] && l < r) // pivot보다 작거나 같은 값을 찾는 r
+			r--;
+			
+		if(l < r)
+		{
+			if(l == pivot)
+				pivot = r;
+			
+			swap(a[l], a[r]);
+		}
+	}
+	swap(a[pivot], a[r]);
+	return r;
+}
+```
+
+데이터의 중간을 기준으로 pivot을 잡으면 아래와 같은 순서로 정렬이 이루어진다. <br>
+![middle_pivot](https://miro.medium.com/max/272/1*QWVKm7o7aSWJCSQ4Z_5Kag.png) <br>
+출처 : https://medium.com/quantum-ant <br>
+
+#### 5.6.1 퀵 정렬 vs 합병 정렬
+* 공통점
+	- 주어진 배열을 두 개로 분할하고, 각각을 정렬한다.
+* 차이점
+	- 합병 정렬은 분할할 때, 단순히 두 부분으로 나눈다.
+	- 퀵 정렬은 Pivot을 기준으로 작은 것은 왼쪽에, 큰 것은 오른쪽에 둔다.
+	- 합병 정렬은 각 부분의 정렬이 끝난 후에 `Merge`라는 과정이 있지만, 퀵 정렬은 각 부분의 정렬이 끝나면 후 처리 작업이 없다.
+	
+
 
 ### 5.7. 쉘 정렬(Shell Sort)
 `삽입 정렬`을 보완한 알고리즘이다. <br>
