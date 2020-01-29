@@ -748,11 +748,10 @@ Qpeek() | Queue의 앞쪽에서 원소를 삭제하지 않고 확인해서 반�
 	- 공백 상태 : `front = rear`
 	- 포화 상태 : `rear = n - 1 ( n : 배열의 크기 )`
 
-<br>
 * 선형 큐의 구현과정
-1. createQueue() <br><br>
-	크기 n인 1차원 배열을 생성 <br>
-	front = rear = -1 초기화   <br>
+1. createQueue()<br><br>
+	크기가 n인 1차원 배열을 생성하고, front와 rear를 -1로 초기화 시킨다.
+	
 2. enQuene(item) <br><br>
 	rear를 1증가 시킨 후, 그 자리에 새로운 원소를 삽입한다.
 	```cpp
@@ -767,6 +766,7 @@ Qpeek() | Queue의 앞쪽에서 원소를 삭제하지 않고 확인해서 반�
 	}
 	end enQueue()
 	```
+	
 3. deQueue() <br><br>
 	front를 1증가 시킨 후, 그 자리에 있는 원소를 반환한다. <br>
 	원래라면, 반환하고 삭제이지만 여기서는 첫 번째 원소를 반환한다는 점에서 삭제와 동일시 여긴다. <br>
