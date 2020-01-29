@@ -152,7 +152,7 @@ pop(s)
 end pop()
 ```
 
-### 2.3. Stack의 응용
+### 2.3. Stack
 #### 2.3.1. 괄호검사
   - 왼쪽 괄호의 개수와 오른쪽 괄호의 개수가 같아야한다.
   - 괄호의 종류는 `()` `{}` `[]` 가 있다.
@@ -712,6 +712,265 @@ int partition(int a[], int begin, int end)
 
 
 출처 : https://sexycoder.tistory.com/74
+
+## 6. Queue
+* Queue의 특징
+	- 삽입, 삭제의 위치가 제한적인 자료구조 (큐는 뒤에서 삽입하고, 앞에서는 빼는 자료구조)
+	- `선입선출구조`(FIFO, First In First Out)
+	- 실생활에서 보통 먼저 온 사람부터 서비스를 받고 나가는 형태가 있다.
+	- 보통 앞 부분(머리)를 `front`라고 하고, 뒷 부분(꼬리)를 `rear`이라고 한다.
+
+* Queue의 연산들
+
+연산 | 기능
+---|---
+enQueue(item) | Queue의 뒤쪽에 rear 다음에 원소를 삽입
+deQueue() | Queue의 앞쪽에서 원소를 삭제하고 반환
+createQueue() | Queue를 생성
+isEmpty() | Queue가 공백상태인지를 확인
+isFull() | Queue가 꽉찬상태인지를 확인
+Qpeek() | Queue의 앞쪽에서 원소를 삭제하지 않고 확인해서 반환
+
+* Queue의 종류들
+
+이름 | 특징
+---|---
+선형큐 | 배열을 사용해서 구현한 큐
+환영큐(원형큐) | 기존의 선형큐의 단점을 보완하고자 만든 큐
+연결큐 | 리스트를 이용하여 구현한 큐
+우선순위 큐 | `Heap` 자료구조를 이용한 큐
+
+### 6.1 선형 큐(Linear Queue)
+
+* 선형 큐의 특징
+	- 1차원 배열을 이용한 Queue이다.
+	- 초기 상태 : `front = rear = -1`
+	- 공백 상태 : `front = rear`
+	- 포화 상태 : `rear = n - 1 ( n : 배열의 크기 )`
+
+<br>
+* 선형 큐의 구현과정
+1. createQueue() <br><br>
+	크기 n인 1차원 배열을 생성 <br>
+	front = rear = -1 초기화   <br>
+2. enQuene(item) <br><br>
+	rear를 1증가 시킨 후, 그 자리에 새로운 원소를 삽입한다.
+	```cpp
+	enQueue(item)
+	{
+		if(isFull()) then return;
+		else
+		{
+			rear <- rear + 1;
+			Q[rear] <- item;
+		}
+	}
+	end enQueue()
+	```
+3. deQueue() <br><br>
+	front를 1증가 시킨 후, 그 자리에 있는 원소를 반환한다. <br>
+	원래라면, 반환하고 삭제이지만 여기서는 첫 번째 원소를 반환한다는 점에서 삭제와 동일시 여긴다. <br>
+	```cpp
+	deQueue()
+	{
+		if(isEmpty()) then return;
+		else
+		{
+			front <- front + 1;
+			return Q[front];
+		}
+	}
+	end deQueue()
+	```
+	
+4. isEmpty(), isFull() <br><br>
+	공백 상태를 검사하는 `isEmpty()`와 포화 상태를 검사하는 `isFull()` <br>
+	`front = rear`이면 공백이고, `rear = n - 1`이면 포화상태이다. <br>
+	```cpp
+	isEmpty()
+	{
+		if(front == rear) return true;
+		else return false;
+	}
+	end isEmpty()
+	```
+	```cpp
+	isFull()
+	{
+		if(rear == n - 1) return true;
+		else return false;
+	}
+	end isFull()
+	```
+
+5. Qpeek() <br><br>
+	가장 앞에 있는 원소를 삭제하지 않고 반환하는 연산이다. <br>
+	```cpp
+	Qpeek()
+	{
+		if(isEmpty()) return;
+		else return Q[front+1];
+	}
+	end Qpeek()
+	```
+* 선형 큐의 문제점은 꽉차있지도 않은데 꽉찼다고 인식하는 것이다.
+	- `rear = n - 1`인 상태이지만, 배열의 앞부분에는 활용 공간이 남아있는 상태
+	- 이런 경우는 더 이상의 삽입을 수행하지 못한다.
+	<br>
+* 선형 큐의 해결방안
+	- 1차원 배열은 사용하면서, 논리적으로는 배열의 처음과 끝이 연결되어 있는 원형 큐로 가정하고 사용하는 것이다.
+
+### 6.2. 원형 큐(Circular Queue)
+* 원형 큐의 특징
+	- 초기 공백 상태 : `front = rear = 0`
+	- index가 순환할 수 있도록 `mod`연산을 활용한다. (계속 인덱스는 돌아야하기 때문에)
+	- front변수는 `공백 상태`와 `포화 상태`를 구분을 쉽게하기 위해서 front가 가리키는 자리는 사용하지 않고 빈자리로 둔다.
+	- 선형 큐에서는 삽입과 삭제할 때, rear와 front를 각각 1씩 증가시켰다.
+	- 원형 큐에서는 삽입과 삭제할 때, rear와 front를 각각 1씩 증가시킨 후에 `mod`연산을 활용한다.
+	
+* 원형 큐의 구현
+1. createQueue()<br><br>
+	크기가 n인 1차원 배열을 생성하고, <br>
+	front = rear = 0으로 초기화 한다. <br>
+2. isEmpty(), isFull()<br><br>
+	 공백 상태 : `front = rear`
+	 포화 상태 : `삽입할 rear의 다음 위치 = front`
+	 ```cpp
+	 isEmpty()
+	 {
+	 	if(front == rear) return true;
+		else return false;
+	 }
+	 end isEmpty()
+	 ```
+	 ```cpp
+	 isFull()
+	 {
+	 	if((rear+1) mod n == front) return true;
+		else return false;
+	 }
+	 end isFull()
+	 ```
+3. enQueue(item)<br><br>
+	기존의 선형 큐와 마찬가지로 rear를 1증가 시킨다. <br>
+	다만 여기서 `mod`연산을 이용해서 넣어줘야 한다. <br>
+	```cpp
+	enQueue(item)
+	{
+		if(isFull()) return false;
+		else
+		{
+			rear <- (rear + 1) mod n;
+			cQ[rear] <- item;
+		}
+	}
+	end enQueue()
+	```
+4. deQueue()<br><br>
+	 기존의 선형 큐와 마찬가지로 front를 1증가 시킨다. <br>
+	 다만 여기서 `mod`연산을 이용해서 반환해줘야 한다. <br>
+	 ```cpp
+	 deQueue()
+	 {
+	 	if(isEmpty()) return;
+		else
+		{
+			front <- (front + 1) mod n;
+			return cQ[front];
+		}
+	 }
+	 end deQueue()
+	 ```
+* 원형 큐의 문제점은 배열의 길이가 정해지면 바꿀 수 없다는 것이다.
+	- 배열의 가장 큰 문제점은 정적이다.
+	- 더 많은 원소를 넣고 싶으면 새로 만들어서 복사하는 비용이 발생하게 된다.
+	- 그래서 한 번에 어느정도의 크기를 예상하고 만들어서 사용해야 한다는 점이 있다.
+	<br>
+* 원형 큐의 해결방안
+	- 연결 큐를 이용하자.
+
+### 6.3. 연결 큐(Linked Queue)
+* 연결 큐의 특징
+	- `Single Linked List`를 이용한 큐 구현이다.
+	- 여기서의 큐의 원소는 하나의 `node`가 된다.
+	- 원소의 순서는 `node`와 `node`가 서로 `연결(link)`되어 있다.
+	- front는 첫 번째 노드를 가리키는 링크
+	- rear는 마지막 노드를 가리키는 링크
+	- 초기 상태는 `front = rear = NULL`
+	- 공백 상태는 `front = rear = NULL`
+	- 동적이다.
+
+* 연결 큐의 구현
+1. createLinkedQueue()<br><br>
+	```cpp
+	createLinkedQueue()
+	{
+		front <- NULL;
+		rear  <- NULL;
+	}
+	end createLinkedQueue()
+	```
+2. isEmpty()<br><br>
+	선형 큐와 원형 큐에 있었던 포화 상태를 체크해주는 `isFull()`은 연결 큐에서는 없어도 된다. <br>
+	그 이유는 연결 큐에서는 포화가 발생할 수 없기 때문이다. (동적으로 늘어나기 때문에) <br>
+	공백 상태 검사는 `front = rear = NULL`이다.
+	```cpp
+	isEmpty()
+	{
+		if(front == NULL) return true; // 둘 중 하나만 검사해줘도 된다.
+		else return false;
+	}
+	end isEmpty()
+	```
+3. enQueue(item)<br><br>
+	새로운 원소를 삽입하기 전에, 새로운 노드를 하나 생성하고 데이터 필드에 item을 저장한다. <br>
+	그런 다음에 큐가 공백이면 그 노드를 front와 rear로 지정하고, 아니라면 rear의 next로 붙여 넣는다. <br>
+	 
+	```cpp
+	enQueue(item)
+	{
+		new <- getNode(); // 보통 malloc을 이용해서 만든다.
+		new.data <- item;
+		new.link <- NULL;
+		if(front == NULL)
+		{
+			// 큐가 비어있다는 것이므로
+			rear  <- new;
+			front <- new;
+		}
+		else
+		{
+			rear.next <- new;
+			rear <- new;
+		}
+	 }
+	 end enQueue()
+	 ```
+4. deQueue()<br><br>
+	`old`가 삭제할 노드를 가리키게 한다. <br>
+	반환할 `item`을 위해서 `front.data`를 저장해준다. <br>
+	`front`를 하나 뒤로 이동시킨다. <br>
+	만약에 삭제한 후에 큐가 공백이 되어버리면 `rear`도 NULL로 설정한다. <br>
+	`메모리 누수(Memory Leak)`를 방지하기 위해서 `old`의 할당을 `해제(free)`해버린다. <br>
+	```cpp
+	deQueue()
+	{
+		if(isEmpty()) return;
+		else
+		{
+			old <- front;
+			item <- front.data;
+			front <- front.next;
+			if(isEmpty()) rear <- NULL;
+			free(old);
+			return item;
+		}
+	}
+	end deQueue()
+	```
+
+	
+	 
 # C, C++
 ## 1. String
 ### 1.1. string::find 와 string::npos
