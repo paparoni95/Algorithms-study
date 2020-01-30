@@ -1010,10 +1010,7 @@ Qpeek() | Queue의 앞쪽에서 원소를 삭제하지 않고 확인해서 반�
 	- 삽입할 때 원소의 우선순위 비교를  `O(logN)`만 확인하면 삽입될 위치를 찾을 수 있다.
 	- 마찬가지로 우선순위 큐의 특징상 가장 앞에 원소는 우선순위가 가장 높다.
 
-### 6.5. 큐의 활용
-Queue의 자료구조를 이용해서 다양한 문제들을 해결한다. <br>
-
-**버퍼**
+### 6.5. 버퍼 (큐의 활용)
 데이터를 한 곳에서 다른 한 곳으로 전송하는 동안 일시적으로 그 데이터를 보관하는 메모리 영역이다. <br>
 `버퍼링`은 버퍼를 활용하는 방식으로 버퍼를 채우는 동작을 의미한다. <br><br>
 보통 버퍼의 활용의 예는 입출력에서 자주 일어난다. <br>
@@ -1022,6 +1019,102 @@ Queue의 자료구조를 이용해서 다양한 문제들을 해결한다. <br>
 3. 키보드 입력 버퍼에서 `Enter키`가 들어오게 되면 해당 데이터를 프로그램 실행 영역으로 옮긴다.
 4. 이를 가지고 연산한다.
 
+### 6.6. BFS(Breadth First Search, 너비 우선 탐색)
+그래프의 알고리즘 중 하나로, 자료구조 `Queue`를 이용한다. <br>
+
+* 동작 방식
+	- 시작점의 인접한 정점들을 모두 차례로 방문한 후 방문했던 정점을 시작점으로 하여 다시 인접한 정점들을 차례로 방문한다.
+	- 여기서 한 정점을 기준으로 인접해 있는 모든 정점들을 차례로 너비 우선 탐색을 진행해야 하므로 `Queue`가 이용된다.
+	- 더 자세한 내용은 따로 분류해서 작성한다.
+
+## 7. List (리스트)
+## 8. Tree (트리)
+## 9. Graph (그래프)
+그래프는 `정점(Vertex)`와 `간선(Edge)`로 이루어진 자료구조이다. <br>
+![graph](https://www.geeksforgeeks.org/wp-content/uploads/undirectedgraph.png) <br>
+출처 : https://www.geeksforgeeks.org/wp-content/uploads/undirectedgraph.png <br>
+
+### 9.1. Path, UnDirected Graph, Directed Graph
+그래프의 종류는 다양하다. <br>
+보통 그래프가 주어지는 경우 방향성이 없는 `UnDirected Graph`와 방향성이 있는 `Directed Graph`가 있다.
+![Graph](https://mblogthumb-phinf.pstatic.net/MjAxNzAxMzFfMTgx/MDAxNDg1ODQzNTQ4NTgz.nh0nifj5nlyy2jx7fer2oCErJLBPlTTWh_E7UpyGf1cg.-mKQRyyDUzyHWGrRziXyi7Ptosd-kBqWhJTqt7sbNFQg.JPEG.occidere/image_6319709181485828897310.jpg?type=w800) <br>
+출처 : https://m.blog.naver.com/occidere/220923695595 <br>
+그리고 `Path`는 경로를 뜻하며, 내가 어디에서 어디로 왔는지를 보여주는 일련의 과정들이다. <br>
+경로들 중에서 더 빠른 경로를 `최단 경로(Shortest Path)`라고 하며, 이를 구하는 알고리즘은 `다익스트라(Dijkstra)`와 `플로이드 와샬(Floyd Washall)` 알고리즘이 있다. <br>
+
+### 9.2. Cycle
+하나의 정점으로 시작해서 끝나는 정점이 같다면? 그것을 우리는 `Cycle(사이클)`이라고 한다. <br>
+예를 들면) `A -> C -> D -> E -> B -> A` (A의 정점에서 시작해서 도착도 A의 정점으로 끝나는 그래프) <br>
+자기 자신의 정점에서 자기 자신으로 끝나는 것도 해당한다. `A -> A`<br>
+![Cycle](https://mblogthumb-phinf.pstatic.net/MjAxNzAxMjdfMjYy/MDAxNDg1NTIzODc3NzIx.CN9J8Vp3u91LkZynrljXfOvvZf1Ch7gvAU0dyNfNuaMg.ZPQVYG1Kqzdg4HEE1sN6b4f_AdmzGKNth17o5PeecMUg.JPEG.occidere/image_1779474731485523735508.jpg?type=w800) <br>
+출처 : https://m.blog.naver.com/occidere/220921661731 <br>
+위의 그림은 방향은 있으면서도 `Cycle`이 존재하지 않는 그래프를 `DAG(Directed Acyclic Graph)`라고 한다. <br>
+`DAG`의 유무는 `위상 정렬(Topological Sort)` 알고리즘을 사용할 때 이용한다. <br>
+
+### 9.3. Weight
+그래프 중에서는 간선 마다 `Weight(가중치)`가 붙어있는 그래프가 있다. <br>
+이러한 간선은 A -> B로 간다고 했을 때 10의 의미는 그 때의 비용이 든다고 할 수 있다. <br>
+보통 간선의 비용을 중요하게 여기는 알고리즘은 `다익스트라(Dijkstra)`와 `플로이드 와샬(Floyd Washall)` 알고리즘이 있다. <br>
+![Weight](https://mblogthumb-phinf.pstatic.net/MjAxNzAxMzFfMTcy/MDAxNDg1ODQzNjMzMTA5.vNinscdDoQT4sANCCH_Q3PrT3UMwSYjAum9ck0e1Iv0g.bSmfZRMhbgYCotbhD8ZnGv-pzpJUHyJN6yPjlLje3IMg.JPEG.occidere/image_6359776771485841053989.jpg?type=w800) <br>
+출처 : https://m.blog.naver.com/occidere/220923695595 <br>
+
+### 9.4. 그래프의 표현 방법
+그래프를 표현하는 방법은 2가지가 있다. <br>
+2차원 배열 형태를 이용한 `인접 행렬(Adjacency Matrix)` 과  <br>
+리스트 형태를 이용한 `인접 리스트(Adjacency List)` 가 있다. <br>
+
+#### 9.4.1. 인접 행렬(Adjacency Matrix)
+모든 정점과 모든 정점 사이의 간선의 정보를 다 저장하는 형태이다. <br>
+
+* 장점
+	- 구현이 쉽고 직관적이다.
+	- 한 정점에서 다른 정점이 연결되어 있는지 확인하는 시간이 `O(1)`이다.
+	- graph[u][v]가 0이면 연결 X, 1이면 연결 O 형태이다.
+	- `완전 그래프`에서는 `인접 행렬`이 `인접 리스트`보다 더 좋다.
+	- `완전 그래프`는 그래프의 모든 정점 사이에 간선이 존재하는 그래프이다.
+* 단점
+	- 한 정점에서 인접한 정점을 찾을 때에는 `O(N)`이 걸린다.
+	- 불필요한 정보의 저장이 많다.
+	- 2차원 배열 형태를 유지하므로 N이 커지면 메모리의 사용량도 N^2이 된다.
+	
+![Matrix](https://mblogthumb-phinf.pstatic.net/MjAxNzAxMzFfMTAy/MDAxNDg1ODQzNTU5NTYw.emxOr6a5-YI-IqPFG4pMWFzylg-Y3aFc0gvD2bdxvXIg.HiAfnWGkn_4jH5d5O2MpKeGbU5_FNJr6lLebEdRTYS4g.JPEG.occidere/image_5867957401485829917305.jpg?type=w800) <br>
+출처 : https://m.blog.naver.com/occidere/220923695595 <br>
+
+#### 9.4.2. 인접 리스트(Adjacency List)
+실제로 정점과 정점이 연결된 간선들의 정보만 저장하는 형태이다. <br>
+
+* 장점
+	- 한 정점에서 인접한 정점을 찾을 때에는 `O(E)`이 걸린다. (실제로 있는 간선의 정보만 저장하고 있기 때문에)
+	- 보통 그래프 알고리즘(DFS, BFS)을 구현할 때 `인접 리스트`를 이용하면 시간을 단축시킬 수 있다.
+	- 필요한 정보만 저장하므로 메모리 절약도 된다.
+* 단점
+	- `인접 행렬`에 비해서 구현이 어렵다.
+	- 그래서 보통 CPP의 STL에서 `List`나 `vector`를 이용해서 구현한다.
+	- `완전 그래프`의 경우 효율이 좋지 못하다.
+
+![list1](https://mblogthumb-phinf.pstatic.net/MjAxNzAxMzFfMjM5/MDAxNDg1ODQzNTY5MzAx.LuvDUrY0ZNJDyT7sXSPtdvprIUxN5uRE8YJGbkPvmfcg.b6z71d7VkH75ByBGfXzJa_EfUAagKh1WwObjP9mJpU4g.JPEG.occidere/image_3029405931485831316448.jpg?type=w800) <br>
+
+![list2](https://mblogthumb-phinf.pstatic.net/MjAxNzAxMzFfMjkx/MDAxNDg1ODQzNTc5OTc5.SxJSDnBn9eS-q2T6IvifbmHaUjG84zKbhPnFszDoOKQg.abtanX15WZje27L_dNJyb8e8Lqlevd8YaDJ2DmsnCNYg.JPEG.occidere/image_1713515921485831634971.jpg?type=w800)<br>
+
+출처 : https://m.blog.naver.com/occidere/220923695595 <br>
+
+### 9.5. 그래프 탐색 (Graph Search)
+정점을 탐색하는 방법은 `DFS`와 `BFS`, `Dijkstra`와 `Floyd Washall`이 있다. <br>
+서로 지향하는 목표가 다르다는 것이 핵심이다. <br>
+`DFS`와 `BFS`는 **하나의 정점에서 시작해서 모든 정점을 1번씩 탐색하는 알고리즘이다.** <br>
+`Dijkstra`는 **하나의 정점에서 모든 정점간의 최단 경로를 구해주는 알고리즘이다.** <br>
+`Floyd Washall`은 **모든 정점에서 모든 정점간의 최단 경로를 다 구해주는 알고리즘이다.** <br><br>
+
+#### 9.5.1 DFS (Depth First Search, 깊이 우선 탐색)
+현재 정점에서 연결된 정점을 하나 골라서 갈 수 있는 만큼 최대한 깊게 들어가면서 탐색하는 방법이다. <br>
+여기서 `가지치기` 기술이 들어가게 되면 `Backtracking`이다. <br>
+사용되는 자료구조는 `stack`이며, 스택을 이용해서 구현해도 되고 `recursive`를 이용해서 구현할 수도 있다. <br>
+옆으로 넓은 그래프에 대해서는 준수한 성능을 보인다고 하고, 아래로 깊은 그래프의 경우는 좋은 성능을 보이기가 어렵다고 한다. <br>
+
+![DFS](https://gmlwjd9405.github.io/images/algorithm-dfs-vs-bfs/dfs-example.png) <br>
+출처 : https://gmlwjd9405.github.io/2018/08/14/algorithm-dfs.html <br>
+
+보통 `DFS`를 구현할 때 `stack`을 이용해서 구현도 하지만, 가장 쉬운 방법은 `recursive` 방식을 이용해서 구현하는 방법이다. <br>
 
 	
 	 
