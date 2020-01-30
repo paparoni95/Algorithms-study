@@ -1070,12 +1070,16 @@ Qpeek() | Queue의 앞쪽에서 원소를 삭제하지 않고 확인해서 반�
 	- 구현이 쉽고 직관적이다.
 	- 한 정점에서 다른 정점이 연결되어 있는지 확인하는 시간이 `O(1)`이다.
 	- graph[u][v]가 0이면 연결 X, 1이면 연결 O 형태이다.
-	- `완전 그래프`에서는 `인접 행렬`이 `인접 리스트`보다 더 좋다.
-	- `완전 그래프`는 그래프의 모든 정점 사이에 간선이 존재하는 그래프이다.
+	- `(Complete Graph)완전 그래프`에서는 `인접 행렬`이 `인접 리스트`보다 더 좋다.
+	- `(Complete Graph)완전 그래프`는 그래프의 모든 정점 사이에 간선이 존재하는 그래프이다.
+	- `(dense Graph)밀집 그래프`에서도 적합하다.
+	- `(dense Graph)밀집 그래프`는 정점에 비해서 간선의 개수가 더 많은 그래프이다.
 * 단점
 	- 한 정점에서 인접한 정점을 찾을 때에는 `O(N)`이 걸린다.
 	- 불필요한 정보의 저장이 많다.
 	- 2차원 배열 형태를 유지하므로 N이 커지면 메모리의 사용량도 N^2이 된다.
+	- 그래서 `Sparse Graph(희소 그래프)`에서는 성능이 좋지 못하다.
+	- `Sparse Graph(희소 그래프)`는 정점이 간선의 개수보다 더 많은 그래프이다.
 	
 ![Matrix](https://mblogthumb-phinf.pstatic.net/MjAxNzAxMzFfMTAy/MDAxNDg1ODQzNTU5NTYw.emxOr6a5-YI-IqPFG4pMWFzylg-Y3aFc0gvD2bdxvXIg.HiAfnWGkn_4jH5d5O2MpKeGbU5_FNJr6lLebEdRTYS4g.JPEG.occidere/image_5867957401485829917305.jpg?type=w800) <br>
 출처 : https://m.blog.naver.com/occidere/220923695595 <br>
@@ -1087,16 +1091,21 @@ Qpeek() | Queue의 앞쪽에서 원소를 삭제하지 않고 확인해서 반�
 	- 한 정점에서 인접한 정점을 찾을 때에는 `O(E)`이 걸린다. (실제로 있는 간선의 정보만 저장하고 있기 때문에)
 	- 보통 그래프 알고리즘(DFS, BFS)을 구현할 때 `인접 리스트`를 이용하면 시간을 단축시킬 수 있다.
 	- 필요한 정보만 저장하므로 메모리 절약도 된다.
+	- `Sparse Graph(희소 그래프)`에서는 좋은 성능을 보인다.
 * 단점
 	- `인접 행렬`에 비해서 구현이 어렵다.
 	- 그래서 보통 CPP의 STL에서 `List`나 `vector`를 이용해서 구현한다.
-	- `완전 그래프`의 경우 효율이 좋지 못하다.
+	- `(Complete Graph)완전 그래프`의 경우 효율이 좋지 못하다.
+	- `(dense Graph)밀집 그래프`의 경우도 효율이 좋지 못하다.
 
 ![list1](https://mblogthumb-phinf.pstatic.net/MjAxNzAxMzFfMjM5/MDAxNDg1ODQzNTY5MzAx.LuvDUrY0ZNJDyT7sXSPtdvprIUxN5uRE8YJGbkPvmfcg.b6z71d7VkH75ByBGfXzJa_EfUAagKh1WwObjP9mJpU4g.JPEG.occidere/image_3029405931485831316448.jpg?type=w800) <br>
 
 ![list2](https://mblogthumb-phinf.pstatic.net/MjAxNzAxMzFfMjkx/MDAxNDg1ODQzNTc5OTc5.SxJSDnBn9eS-q2T6IvifbmHaUjG84zKbhPnFszDoOKQg.abtanX15WZje27L_dNJyb8e8Lqlevd8YaDJ2DmsnCNYg.JPEG.occidere/image_1713515921485831634971.jpg?type=w800)<br>
 
 출처 : https://m.blog.naver.com/occidere/220923695595 <br>
+
+![list3](https://t1.daumcdn.net/cfile/tistory/265E074D584C26DD2B)<br>
+출처 : https://sarah950716.tistory.com/12 <br>
 
 ### 9.5. 그래프 탐색 (Graph Search)
 정점을 탐색하는 방법은 `DFS`와 `BFS`, `Dijkstra`와 `Floyd Washall`이 있다. <br>
@@ -1105,7 +1114,14 @@ Qpeek() | Queue의 앞쪽에서 원소를 삭제하지 않고 확인해서 반�
 `Dijkstra`는 **하나의 정점에서 모든 정점간의 최단 경로를 구해주는 알고리즘이다.** <br>
 `Floyd Washall`은 **모든 정점에서 모든 정점간의 최단 경로를 다 구해주는 알고리즘이다.** <br><br>
 
-#### 9.5.1 DFS (Depth First Search, 깊이 우선 탐색)
+**그래프에서의 탐색의 유형들**
+![Search](https://mblogthumb-phinf.pstatic.net/MjAxNzAxMzFfODEg/MDAxNDg1ODQzNjU1NDQ0.Z2GhsS5VNR8oc1BCmOwuv3GO723QVPjVWYiels4N3Csg.4WLB5Niq4o4EqFOxNzp5opccFlOG4nIIRP-babdFFeIg.JPEG.occidere/image_4888565491485842708240.jpg?type=w800) <br>
+출처 : https://m.blog.naver.com/occidere/220923695595 <br>
+
+보통 그래프가 아닌 모양도 그래프로 취급하고 문제를 풀어야 하는 형태도 존재한다. <br>
+그러한 경우 그래프를 이용해서 풀면 문제를 보다 쉽게 해결할 수 있는 시각이 생긴다. <br>
+
+#### 9.5.1. DFS (Depth First Search, 깊이 우선 탐색)
 현재 정점에서 연결된 정점을 하나 골라서 갈 수 있는 만큼 최대한 깊게 들어가면서 탐색하는 방법이다. <br>
 여기서 `가지치기` 기술이 들어가게 되면 `Backtracking`이다. <br>
 사용되는 자료구조는 `stack`이며, 스택을 이용해서 구현해도 되고 `recursive`를 이용해서 구현할 수도 있다. <br>
@@ -1116,8 +1132,193 @@ Qpeek() | Queue의 앞쪽에서 원소를 삭제하지 않고 확인해서 반�
 
 보통 `DFS`를 구현할 때 `stack`을 이용해서 구현도 하지만, 가장 쉬운 방법은 `recursive` 방식을 이용해서 구현하는 방법이다. <br>
 
+* **인접 행렬**을 이용해서 구현한 DFS
+```cpp
+void DFS(int x)
+{
+	visited[x] = true; // 방문했다고 표시
+	cout << x << " ";
+	for(int i = 1; i <= n; i++)
+	{
+		if(a[x][i] == 1 && visited[i] == false) // x -> i의 간선이 존재하고, 방문하지 않았다면
+			DFS(x);   // 방문한다.
+	}
+}
+```
+	- 위의 구현결과의 시간복잡도는 `O(V^2)`이다.
+	- 하나의 V는 `DFS 함수를 실행하는 횟수` * `for문 안에 1 ~ V까지 실행하는 횟수` = `V^2`가 나오게 된다.
+
+* **인접 리스트**를 이용해서 구현한 DFS
+```cpp
+void DFS(int x)
+{
+	visited[x] = true; // 방문했다고 표시
+	cout << x << " ";
+	for(int i = 0; i < a[x].size(); i++)
+	{
+		int next = a[x][i]; // 다음 정점을 찾고
+		if(visited[next] == false) // 방문하지 않았다면
+			DFS(next);  // 방문한다.
+	}
+}
+```
+	- 위의 구현결과의 시간 복잡도는 `O(V+E)`이다.
+	- 하나의 V는 `DFS함수를 실행하는 횟수` + `for문 안에는 실제 간선의 정보만 담고 있으므로 E` = `V+E`가 나오게 된다.
 	
-	 
+* 인접 행렬과 인접 리스트의 차이
+두 구현은 메모리의 공간과 시간복잡도의 차이가 다르다. <br>
+따라서, 상황에 맞게 적용하면 된다. <br>
+
+#### 9.5.2. BFS (Breadth First Search, 너비 우선 탐색)
+현재 정점과 연결된 인접 정점들에 대해서 우선적으로 넓게 탐색하는 방법이다. <br>
+자료구조는 `Queue`를 이용한다. <br>
+아래로 깊은 그래프에 대해서는 좋은 성능을 기대할 수 있으나, 옆으로 넓은 그래프에 대해서는 탐색시간이 오래걸린다고 한다. <br>
+
+![BFS](https://gmlwjd9405.github.io/images/algorithm-dfs-vs-bfs/bfs-example.png) <br>
+출처 : https://gmlwjd9405.github.io/2018/08/15/algorithm-bfs.html <br>
+
+* **인접 행렬**을 이용해서 구현한 BFS
+```cpp
+void BFS(int x)
+{
+	queue<int> q;      // 큐 생성
+	q.push(x);         // 큐에 시작 지점 넣고
+	visited[x] = true; // 방문했다고 체크
+	while(!q.empty())
+	{
+		int cur = q.front();  // 큐에서 하나를 빼고
+		q.pop();              // 삭제한다.
+		cout << x << " ";
+		for(int i = 1; i <= n; i++) // cur에서 인접한 정점들을 확인한다.
+		{
+			if(a[x][i] == 1 && visited[i] == false) // 간선이 존재하고, 방문하지 않았다면
+			{
+				visited[i] = true; // 방문해주고
+				q.push(i); // 큐에 넣어준다.
+			}
+		}
+	}
+}
+```
+	- 위의 구현결과의 시간복잡도는 `O(V^2)`이다.
+	- 중요한 것은 `DFS`와 `BFS`의 목적은 같다는 것이다. 그래서 시간복잡도 비슷하다.
+* **인접 리스트**를 이용해서 구현한 BFS
+```cpp
+void BFS(int x)
+{
+	queue<int> q;
+	q.push(x);
+	visited[x] = true;
+	while(!q.empty())
+	{
+		int cur = q.front();
+		q.pop();
+		cout << x << " ";
+		for(int i = 0; i < a[x].size(); i++)
+		{
+			int next = a[x][i];
+			if(visited[next] == false) // 인접 리스트는 실제로 존재하는 간선만 넣기 때문에, 방문 여부만 체크한다.
+			{
+				visited[next] = true;
+				q.push(next);
+			}
+		}
+	}
+}
+```
+	- 위의 구현결과의 시간복잡도는 `O(V+E)`이다.
+
+* BFS의 추가적인 것들
+	- 앞서 목적은 모든 정점을 1번씩만 방문한다는 것이다.
+	- 그런데, `BFS`는 `최단 거리를 구하는 알고리즘`이기도 하다. (단, 조건부)
+	- 조건부는 그래프에서의 `모든 가중치가 1일 때`이다.
+	- 보통 `미로 탐색 유형(Flood Fill)`에서 사용된다.
+	
+![Flood](https://hyunjae-lee.github.io/assets/img/algorithm/ps/ff2.jpg) <br>
+출처 : https://hyunjae-lee.github.io/hyunjae-lee.github.io/problem%20solving/DFSandBFS2/ <br>
+
+#### 9.5.3. Dijkstra (다익스트라, 1-N)
+`BFS`의 응용으로 하나의 정점에서 모든 정점까지의 최단 경로를 찾는데 사용하는 알고리즘이다. <br>
+보통 영어로 `Single source Shortest path problem`라고 한다. <br>
+이 알고리즘은 모든 간선이 모두 양의 간선들을 가져야 하는 조건부가 있다. <br>
+매 탐색마다 해당 정점까지의 가중치의 합을 최소값으로 갱신시켜서 탐색하는 방식이다. <br>
+사용하는 자료구조는 `Queue`를 사용하는 방법과 `우선순위 큐(Priority Queue)`를 사용해서 시간을 단축하는 방법이 있다. <br>
+
+![Dijkstra](https://mblogthumb-phinf.pstatic.net/MjAxNzAxMzFfMTcy/MDAxNDg1ODQzNjMzMTA5.vNinscdDoQT4sANCCH_Q3PrT3UMwSYjAum9ck0e1Iv0g.bSmfZRMhbgYCotbhD8ZnGv-pzpJUHyJN6yPjlLje3IMg.JPEG.occidere/image_6359776771485841053989.jpg?type=w800) <br>
+출처 : https://m.blog.naver.com/occidere/220923695595 <br>
+
+* 다익스트라 응용편
+	- 실생활에 쓰이는 GPS
+	- 네비게이션
+
+* 다익스트라의 구현
+	- `인접 리스트`에 `우선순위 큐`를 같이 사용해서 시간복잡도를 줄이는 방법으로 구현한다.
+	```cpp
+	vector<int> Dijkstra(int start)
+	{
+		vector<int> dist(N + 1, -1); // 보통 dist 배열의 초기화는 INF, -1 중 한다. 
+		priority_queue<pair<int, int>> pq; // first : dist, second : pos
+		dist[start] = 0; // 자기 자신은 비용이 0으로 설정한다.
+		pq.push(make_pair(-dist[start], start));  // Min-Heap처럼 사용하기 위해서 first인자에 -부호를 넣었다.
+		while(!pq.empty())
+		{
+			int cur = pq.top().second;
+			int cur_cost = pq.top().first;
+			pq.pop();
+	
+			if(cur_cost > dist[cur]) continue; // 뽑아온 값이 기존에 저장한 값보다 크면 무용지물이므로
+			
+			for(int i = 0; i < a[cur].size(); i++)
+			{
+				int next = a[cur][i].first;
+				int next_cost = a[cur][i].second;
+				if(dist[next] == -1 || dist[next] > next_cost) // 최단 거리 갱신
+				{
+					dist[next] = next_cost;
+					pq.push(make_pair(-next_cost, next));
+				}
+			}
+		}
+		return dist;
+	}
+	```
+	- 위의 구현결과의 시간복잡도는 `O(E+VlogV)`이다.
+	- `BFS`의 응용이므로 기본적인 틀은 비슷하지만, 다른 정점의 정보와 그 때의 비용을 저장하는 것에 주의하자.
+
+#### 9.5.4. Floyd Washall (플로이드 와샬, N-N)
+모든 정점에서 모든 정점으로의 최단 경로를 구하는 문제에 사용하는 알고리즘이다. <br>
+영어로는 `All pairs shortest path problem` 라고 한다. <br>
+이 알고리즘은 간선이 양이든 음이든 가능하다. <br>
+다만, 음의 사이클이 없는 경우에만 가능하다. 그렇지 않으면 뺑뺑이 된다. <br>
+
+![Floyd Washall](https://mblogthumb-phinf.pstatic.net/MjAxNzAxMzFfMjIw/MDAxNDg1ODQzNjQzNjM2.BMVGdp_1YhX6iwcfV-xZ9RAKPr1na8ygULvdhqGgSrQg.prrxd4BxgQmWR_tHTmvkeQQqcVU-oRxkOd6ajCRH614g.JPEG.occidere/image_6323615901485841577936.jpg?type=w800) <br>
+출처 : https://m.blog.naver.com/occidere/220923695595 <br>
+
+* 플로이드 와샬 구현
+	- `인접 행렬`을 이용해서 구현하는 방법이다.
+	```cpp
+	void floydWarshall()
+	{
+		for(int k = 1; k <= n; k++) // 거쳐가는 노드
+		{
+			for(int i = 1; i <= n; i++) // 출발하는 노드
+			{
+				for(int j = 1; j <= n; j++) // 도착하는 노드
+				{
+					// [i -> k 비용 + k -> j 비용] vs [i -> j 비용]
+					if(d[i][k] + d[k][j] < d[i][j])
+						d[i][j] = d[i][k] + d[k][j];
+				}
+			}
+		}
+	}
+	```
+	- 위의 구현결과의 시간복잡도는 `O(V^3)`이다.
+	- 모든 정점에서 `Dijkstra`를 실행시킨 것과 동일한 결과를 보여주며, 그런 경우에는 `FloydWarshall`을 쓰는 것이 좋다.
+
+#### 9.5.5. Bellman Ford (벨만 포드)
+출처 : https://victorydntmd.tistory.com/104 <br>
+
 # C, C++
 ## 1. String
 ### 1.1. string::find 와 string::npos
