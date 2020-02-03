@@ -1028,6 +1028,268 @@ Qpeek() | Queue의 앞쪽에서 원소를 삭제하지 않고 확인해서 반�
 	- 더 자세한 내용은 따로 분류해서 작성한다.
 
 ## 7. List (리스트)
+* 리스트의 특징들
+	- 자료를 순서대로 한 줄로 저장하는 자료구조
+	- 제일 처음 데이터를 보통 Head가 가리킨다.
+	- 제일 마지막 데이터를 보통 Tail이 가리킨다. (Tail을 구현하면, 성능 향상에 도움이 된다.)
+	- 빈틈없는 데이터의 적재가 가능하다.
+
+* list의 구현 방식
+	- ArrayList : 배열을 기반으로 구현된 list
+	- LinkedList : 메모리의 동적할당을 기반으로 구현된 list
+
+* list의 주요 함수
+
+함수명 | 기능
+--- | ---
+addtoFirst() | list의 앞쪽에 원소를 추가하는 연산
+addtoLast() | list의 뒤쪽에 원소를 추가하는 연산
+add() | list의 특정 위치에 원소를 추가하는 연산
+delete() | list의 특정 위치에 있는 원소를 삭제하는 연산
+get() | list의 특정 위치에 있는 원소를 반환하는 연산
+
+
+### 7.1. ArrayList (순차 리스트)
+![ArrayList](https://t1.daumcdn.net/cfile/tistory/227EE9505639FDBC2B) <br>
+출처 : https://robodream.tistory.com/170
+
+**사용해야할 자료구조는 배열을 이용하자** <br>
+	- 구현 방법은 1차원 배열을 이용해서 항목들을 순서대로 저장한다. <br>
+	- 필요에 따라서 구조체를 만들어서 저장할 수도 있다. <br>
+	
+**접근방법** <br>
+	- 배열의 인덱스를 이용해서 원하는 위치에 접근할 수 있다. <br>
+	- 랜덤 액세스가 가능하므로 빠르게 `O(1)`에 접근이 가능하다. <br>
+
+**삽입 연산** <br>
+	- 삽입 위치의 다음의 항목들을 먼저 이동시킨다. <br>
+	- 이동을 완료한 후에 새로운 원소를 삽입한다. <br>
+	- 단, 이동할 때에는 가장 바깥쪽부터 이동한다. <br>
+	- 삽입 연산의 경우는 `O(N)`이 걸린다. <br>
+**삭제 연산** <br>
+	- 삭제 위치 다음의 항목들을 이동해야한다. <br>
+	- 단, 이동할 때는 삭제 위치의 가까운 곳부터 이동한다. <br>
+	- 삭제 연산의 경우는 `O(N)`이 걸린다. <br>
+
+**배열을 이용해서 list를 구현하면 생기는 단점들**
+1. 자료의 삽입/삭제 연산 과정에서 배열의 단점이 있다. (데이터의 이동이 빈번하다.)
+2. 원소의 개수가 많고 삽입/삭제 연산이 빈번하게 일어날수록 시간이 크게 증가한다.
+3. 배열의 크기는 정적이므로, 이보다 적게 사용하면 메모리 낭비 혹은 메모리 초과가 발생한다.
+
+### 7.2. LinkedList (연결 리스트)
+위에서 배열 기반의 리스트를 보완한 것이 바로 연결 리스트이다. <br>
+조금 더 유연하게 사용이 가능하다. <br>
+1. 자료의 논리적인 순서가 메모리 상의 물리적인 순서와 일치하지 않는다는 것이다. (원소를 이동시키는 작업이 없다.)
+2. 항상 물리적인 순서에 맞게 연산을 하지 않아도 된다. (링크의 연결만 바꿔주면 삽입/삭제가 빠르게 완료된다.)
+3. 리스트의 크기는 동적이므로, 메모리의 효율적인 사용이 가능하다.
+4. 다만 배열의 구현보다 어렵고, 버그가 일어날 수 있다.
+
+**연결 리스트에서는 다음과 같은 개념을 가지고 있다** <br>
+* 노드(Node)
+	- `데이터의 필드`와 `링크 필드`를 가지고 있다. (data, link)
+	- `데이터 필드`는 원소의 값을 저장한다. 필요에 따라서는 구조체가 저장될 수도 있다.
+	- `링크 필드`에는 다음 노드의 주소를 저장한다.
+* 헤드(Head)
+	- list에서 처음 노드를 가리킨다.
+	- `헤드`를 이용해서 다양한 연산들을 활용할 수 있다. (순회, 삽입, 삭제 등등..)
+
+* 리스트는 다양한 종류를 가지고 있다.
+	- 단순 연결 리스트 (Single Linked List)
+		+ 한 방향으로 순회가 가능한 리스트
+		+ `헤드`가 가장 앞의 노드를 가리킨다.
+		+ 가장 마지막 노드의 다음은 `NULL`을 가리킨다.
+		+ ![list1](https://t1.daumcdn.net/cfile/tistory/991EA73A5D4911250C)
+		+ 출처 : https://xzio.tistory.com/295
+	- 이중 연결 리스트 (Double Linked List)
+		+ 후행 노드뿐만 아니라, 선행 노드를 참조하는 링크필드를 만들어서 양방향으로 순회가 가능한 리스트
+		+ ![list2](https://s3.ap-northeast-2.amazonaws.com/opentutorials-user-file/module/1335/2949.png)
+		+ 출처 : https://opentutorials.org/module/1335/8940
+	- 원형 연결 리스트 (Circular Linked List)
+		+ 마지막 노드가 첫 번째 노드와 연결되어 있는 리스트
+		+ ![list3](https://t1.daumcdn.net/cfile/tistory/22793044534C1A3C03)
+		+ 출처 : https://supark7.tistory.com
+	- 이중 원형 연결 리스트 (Doubly Circular Linked List)
+		+ 이중 연결 리스트에서 next와 prev링크가 연결되어 있는 리스트
+		+ ![list4](https://t1.daumcdn.net/cfile/tistory/99C296465C52D2DA10)
+		+ 출처 : https://aerocode.net/181
+		
+* 단순 연결 리스트의 연산들
+	- 삽입 연산
+	- 삭제 연산
+* 삽입 연산
+	- 1. 새로운 메모리(노드)를 할당한다.
+	- 2. 새로운 노드에 데이터 필드와 링크 필드를 저장한다.
+	- 3. 삽입될 위치의 바로 앞에 위치한 노드의 링크 필드를 new의 링크 필드에 복사한다.
+	- 4. new의 주소를 앞 노드의 링크 필드에 저장한다.
+	- List의 처음 위치에 노드를 삽입하는 방법
+	```cpp
+	addtoFirst(L, i) // List 포인터 L, 원소 i
+	{
+		new <- createNode(); // 새로운 노드 생성
+		new.data = i;        // 데이터 필드
+		new.link = L;        // 링크 필드
+		L = new;             // list의 처음으로 저장
+	}
+	end addtoFirst()
+	```
+	- List의 임의의 위치에 노드를 삽압하는 방법
+	- 여기서의 pre는 삽입될 위치의 전 노드를 말한다.
+	```cpp
+	add(L, pre, i) // List 포인터 L, 노드 pre, 원소 i
+	{
+		new <- createNode();
+		new.data = i;
+		if( L == NULL )
+		{
+			L = new;
+			new.link = NULL;
+		}
+		else
+		{
+			new.link = pre.link;
+			pre.link = new;
+		}
+	}
+	end add()
+	```
+	- List의 마지막에 노드를 삽입하는 방법
+	```cpp
+	addtoLast(L, i)
+	{
+		new <- createNode();
+		new.data = i;
+		new.link = NULL;
+		if( L == NULL )
+		{
+			L = new;
+			return;
+		}
+		temp = L;  // temp라는 포인터를 이용해서 List를 순회한다.
+		while(temp.link != NULL) // 마지막 노드를 찾을 때 까지 이동한다.
+			temp = temp.link;
+		temp.link = new; // 마지막 노드 추가
+	}
+	end addtoLast()
+	```
+* 삭제 연산
+	- 1. 삭제할 노드의 앞 노드(선행 노드) 탐색한다.
+	- 2. 삭제할 노드의 링크 필드를 선행노드의 링크 필드에 복사한다.
+	- 3. 삭제할 노드를 할당 해제한다.
+	- 노드 pre의 다음 위치에 있는 노드를 삭제하는 방법
+	```cpp
+	delete(L, pre)
+	{
+		if( L == NULL )
+			return;
+		else
+		{
+			target = pre.link; // 삭제할 노드를 지정
+			if(target == NULL)
+				return;
+			pre.link = target.link;
+		}
+		free(target); // 할당된 메모리 반납
+	}
+	end delete()
+	```
+* 이중 연결 리스트의 연산들
+	- 두 개의 링크 필드와 한 개의 데이터 필드로 구성된다.
+	- 보통 pre 링크 필드와, next 링크 필드, data 데이터 필드로 구성된다.
+	- 삽입 연산
+	- 삭제 연산
+* 삽입 연산
+	- 이중 연결 리스트에서는 순서가 중요하다.
+	- cur가 가리키는 노드 다음으로 D값을 가진 노드를 삽입하는 과정을 보자.
+	- 1. 메모리를 할당하여 새로운 노드 new를 생성하고 데이터 필드에 D값을 저장한다.
+	```cpp
+	new <- createNode();
+	new.data = 'D';
+	```
+	- 2. cur의 next를 new의 next에 저장한다.
+	```cpp
+	new.next <- cur.next;
+	```
+	- 3. cur의 next를 new로 가리키게 한다.
+	```cpp
+	cur.next <- new;
+	```
+	- 4. new의 prev가 cur를 가리키게 한다.
+	```cpp
+	new.prev <-  cur;
+	```
+	- 5. new의 next의 prev가 new를 가리키게 한다.
+	```cpp
+	new.next.prev <- new;
+	```
+* 삭제 연산
+	- cur가 가리키는 노드를 삭제하는 과정을 알아보자.
+	- `prev`노드, `cur`노드, `next노드`가 일렬로 있다고 하자.
+	- 1. 삭제할 노드의 다음 노드의 주소를 삭제할 노드의 이전 노드의 next 필드에 저장한다.
+	```cpp
+	prev.next <- cur.next;
+	```
+	- 2. 삭제할 노드의 다음 노드의 prev 필드에 삭제할 노드의 이전 노드의 주소를 저장한다.
+	```cpp
+	next.prev <- cur.prev;
+	```
+	- 3. cur가 가리키는 노드를 삭제하고, 할당된 메모리를 반환한다.
+	```cpp
+	free(cur)
+	```
+### 7.3. List를 이용한 Stack
+1. stack 내의 순서는 list의 링크를 통해 연결된다.
+2. `Push`는 list의 마지막에 노드 삽입
+3. `Pop`은 list의 마지막 노드를 반환하고 삭제
+4. `Top`은 list의 마지막 노드를 가리키는 변수이다.
+
+* push 연산과 pop 연산
+	- 1. stack을 만든다
+	- 2. 원소 하나를 삽입한다. push(A)
+	- 3. 원소 하나를 삭제한다. pop()
+	```cpp
+	push(i)
+	{
+		temp = createNode();
+		temp.data = i;
+		temp.link = top;
+		top = temp;
+	}
+	end push()
+	```
+	```cpp
+	pop()
+	{
+		element remove;
+		stackNode* temp = top;
+		
+		if(top == NULL)
+			return 0;
+		else
+		{
+			remove = temp.data;
+			top = temp.link;
+			free(temp);
+			return remove;
+		}
+	}
+	```
+### 7.4. 우선순위 큐 (Priority Queue)
+* 구현 방식
+	- 배열을 이용한 우선순위 큐
+	- 리스트를 이용한 우선순위 큐
+* 배열을 이용한 우선순위 큐 방식
+	- 배열을 이용하여 자료를 저장
+	- 원소를 삽입하는 과정에서 우선순위를 비교하여 적절한 위치에 삽입한다. (이 때 데이터의 이동이 반드시 일어남)
+	- 가장 앞에 높은 우선순위의 원소가 위치하게 된다.
+	- 문제는 정적이면서, 삽입/삭제 연산에서 빈번한 데이터의 이동이 시간이나 메모리 낭비가 크다.
+* 리스트를 이용한 우선순위 큐 방식
+	- 연결 리스트를 이용하여 자료를 저장
+	- 원소를 삽입하는 과정에서 list 내의 노드들과 원소들을 비교해서 적절한 위치에 삽입한다. (이 때 데이터의 이동이 아닌 링크의 연결만 바꿈)
+	- 가장 앞에 높은 우선순위의 원소가 위치하게 된다.
+	- 배열에 비해 삽입/삭제 연산에서 데이터의 이동이 일어나지 않는다.
+	- 메모리의 효율적인 사용이 가능하다. (유연성)
+	
+
 ## 8. Tree (트리)
 ## 9. Graph (그래프)
 그래프는 `정점(Vertex)`와 `간선(Edge)`로 이루어진 자료구조이다. <br>
