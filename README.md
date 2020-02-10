@@ -1396,9 +1396,6 @@ get() | list의 특정 위치에 있는 원소를 반환하는 연산
 
 ### 8.5. Binary Search Tree (이진 탐색 트리)
 `이진탐색(binary Search)` + `연결리스트(LinkedList)`
-![Binary_search](https://swalloow.tistory.com/35) <br>
-출처 : https://swalloow.tistory.com/35 <br>
-
 1. 탐색 작업을 효율적으로 하기 위한 자료구조
 2. 모든 원소는 서로 다른 `유일한 키`를 가진다.
 3. 항상 루트 노드의 키값을 기준으로 왼쪽은 루트 노드의 키값보다 작고, 오른쪽은 루트 노드의 키값보다 크다.
@@ -1423,6 +1420,85 @@ get() | list의 특정 위치에 있는 원소를 반환하는 연산
 2. 트리에서 삽입하려는 원소에 대한 탐색을 먼저 수행
 	- 탐색이 성공하면 이미 같은 원소가 트리에 있으므로 종료 (유일한 키)
 	- 탐색이 실패하면 탐색이 끝난 지점에 노드를 삽입
+	
+#### 8.5.3. Delete (삭제)
+1. 삭제하려는 노드가 단말 노드인 경우
+2. 삭제하려는 노드가 한 개의 서브 트리만 가지는 경우
+3. 삭제하려는 노드가 두 개의 서브 트리를 가지는 경우
+
+* 삭제하려는 노드가 단말 노드인 경우
+	- 단말 노드의 부모 노드를 찾아 연결을 끊으면 된다.
+![delete1](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile29.uf.tistory.com%2Fimage%2F212EE34256E50AB120A241) <br>
+출처 : https://swalloow.tistory.com/35
+
+* 삭제하려는 노드가 한 개의 서브 트리만 가지는 경우
+	- 탐색 이후에 자기 노드는 삭제하고, 그 서브 트리를 자기 노드의 부모 노드에 붙여준다.
+
+![delete2](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile8.uf.tistory.com%2Fimage%2F21153D3F56E50E6E3E471A) <br>
+출처 : https://swalloow.tistory.com/35
+
+* 삭제하려는 노드가 두 개의 서브 트리를 가지는 경우
+	- 노드를 삭제하고 난 이후에 부모 노드의 자리를 왼쪽에서 물려줄지 오른쪽에서 물려줄지 선택한다.
+	- 둘 중 어느 것을 선택해도 상관이 없다.
+	- 왼쪽 서브트리의 가장 큰 값을 선택해도 되고,
+	- 오른쪽 서브트리의 가장 작은 값을 선택해도 된다.
+
+![delete3](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile25.uf.tistory.com%2Fimage%2F2561C84456E50BF402FB38) <br>
+출처 : https://swalloow.tistory.com/35 <br>
+
+![delete4](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile1.uf.tistory.com%2Fimage%2F223C674656E50C2A117936) <br>
+출처 : https://swalloow.tistory.com/35 <br>
+
+### 8.6. Binary Search Tree 성능
+1. 탐색, 삽입, 삭제의 시간은 Tree의 높이에 좌우된다. `O(h)`
+2. 트리가 균형이면 `O(logN)`
+3. 최악의 경우는 트리의 형태가 Skewed인 경우 `O(N)` => 순차탐색과 시간복잡도가 같아진다.
+
+알고리즘 | 성능
+---|---
+Array에서 순차 탐색 | O(N)
+정렬된 Array에서 순차 탐색 | O(N)
+정렬된 Array에서 이진 탐색 | O(logN)
+이진탐색트리(BST)에서 탐색 | O(logN), 최악은 O(N)
+Hash 탐색 | O(1) 단, 데이터를 저장할 추가 메모리 공간이 필요.
+
+올바른 `O(logN)`이라는 시간이 나오려면 트리의 형태를 균형있게 만들어줘야 한다. 즉, 트리를 `Complete Binary Tree`나 `AVL`형태로 바꿀 수 있다면 최악의 경우를 막을 수 있다.
+
+### 8.7. Heap (힙)
+1. Complete Binary Tree에 있는 노드 중에서 가장 큰 노드나 가장 작은 노드를 찾기위해 만든 자료구조
+2. 우선순위 큐를 위하여 만들어진 자료구조
+3. 힙의 종류에는 최대 힙(Max Heap), 최소 힙(Min Heap)이 있다.
+4. 최대 힙(Max Heap) : 부모 노드의 키 값 >= 자식 노드의 키 값
+5. 최소 힙(Min Heap) : 부모 노드의 키 값 <= 자식 노드의 키 값
+6. 루트 노드는 항상 제일 크거나, 제일 작은 값이 들어있다.
+
+![heap](https://gmlwjd9405.github.io/images/data-structure-heap/types-of-heap.png) <br>
+출처 : https://gmlwjd9405.github.io/2018/05/10/data-structure-heap.html <br>
+
+#### 8.7.1. Heap Array 구현
+1. 배열을 이용해서 구현한다. (대중적?인 방법)
+2. 편의상 루트 번호는 1부터 시작한다.
+
+![array_heap1](https://gmlwjd9405.github.io/images/data-structure-heap/heap-index-parent-child.png) <br>
+출처 : https://gmlwjd9405.github.io/2018/05/10/data-structure-heap.html <br>
+
+#### 8.7.2. Heap의 삽입
+1. 새로운 요소가 들어오면, 가장 마지막 노드에 이어서 삽입한다.
+2. 이후에 새로운 노드를 기존의 부모 노드들과 성질을 확인하면서 자리를 찾는다.
+
+![array_heap2](https://gmlwjd9405.github.io/images/data-structure-heap/maxheap-insertion.png) <br>
+출처 : https://gmlwjd9405.github.io/2018/05/10/data-structure-heap.html <br>
+
+#### 8.7.3. Heap의 삭제
+1. 최대 힙에서 최댓값은 루트 노드이므로 루트 노드가 삭제된다. (보통 루트 노드가 삭제되고 가장 마지막 노드가 올라오고 정리한다.)
+2. 삭제된 루트 노드에는 힙의 마지막 노드를 가져온다.
+3. 힙을 재구성한다.
+
+![array_heap3](https://gmlwjd9405.github.io/images/data-structure-heap/maxheap-delete.png) <br>
+출처 : https://gmlwjd9405.github.io/2018/05/10/data-structure-heap.html <br>
+
+
+
 
 ## 9. Graph (그래프)
 그래프는 `정점(Vertex)`와 `간선(Edge)`로 이루어진 자료구조이다. <br>
