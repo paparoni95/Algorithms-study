@@ -1334,6 +1334,95 @@ get() | list의 특정 위치에 있는 원소를 반환하는 연산
 1. Tree의 각 노드들을 중복되지 않게 전부 방문하는 것
 2. 비선형 구조이기 때문에 특별한 방법이 필요하다. (기존의 선형방법으로는 힘듬)
 
+* 순회의 종류
+	- 전위순회(Preorder traversal) : Root - Left - Right
+	```cpp
+	preorder_traversal(T)
+	{
+		if(T is not null)
+		{
+			visit(T);
+			preorder_traversal(T.left);
+			preorder_traversal(T.right);
+		}
+	}
+	```
+	- 중위순회(Inorder traversal) : Left - Root - Right
+	```cpp
+	inorder_traversal(T)
+	{
+		if(T is not null)
+		{
+			inorder_traversal(T.left);
+			visit(T);
+			inorder_traversal(T.right);
+		}
+	}
+	```
+	- 후위순회(Postorder traversal) : Left - Right - Root
+	```cpp
+	postorder_traversal(T)
+	{
+		if(T is not null)
+		{
+			postorder_traversal(T.left);
+			postorder_traversal(T.right);
+			visit(T);
+		}
+	}
+	```
+
+### 8.4. Binary Tree 표현법
+#### 8.4.1. Array 표현
+1. Binary Tree의 각 노드에 번호를 부여해서 표현한다. 여기서 루트 노드의 번호는 1번으로 한다. (편의상 1이고, 0사용도 가능)
+2. 배열의 경우, 트리의 높이가 `h`인 경우 `2^(h+1)-1`크기로 배열의 크기를 정해준다.
+
+![array_tree](https://t1.daumcdn.net/cfile/tistory/23222442570DAB9B1C) <br>
+출처 : https://yahma.tistory.com/19 <br>
+
+* 노드 번호의 성질들
+	- 노드 번호가 `i`인 노드의 부모 노드 번호는 `floor(i/2)` 
+	- 노드 번호가 `i`인 노드의 왼쪽 자식 번호는 `2*i`, 오른쪽 자식 번호는 `2*i+1`
+	
+* 배열로 이진 트리를 구현할 때 단점들
+	- 메모리 공간 낭비 발생 (편향 이진트리 같은 경우, 사용하지 않는 공간이 많다.)
+	- 크기가 정적이다.
+	
+#### 8.4.2. LinkedList 표현
+1. 배열 구현의 단점을 보완한 형태이다.
+2. 모든 노드들은 최대 2개의 자식 노드를 가지므로, 단순 연결리스트 노드를 사용해서 구현한다.
+![list_tree](https://t1.daumcdn.net/cfile/tistory/2221DE42570DAB9B1C) <br>
+출처 : https://yahma.tistory.com/19 <br>
+
+### 8.5. Binary Search Tree (이진 탐색 트리)
+`이진탐색(binary Search)` + `연결리스트(LinkedList)`
+![Binary_search](https://swalloow.tistory.com/35) <br>
+출처 : https://swalloow.tistory.com/35 <br>
+
+1. 탐색 작업을 효율적으로 하기 위한 자료구조
+2. 모든 원소는 서로 다른 `유일한 키`를 가진다.
+3. 항상 루트 노드의 키값을 기준으로 왼쪽은 루트 노드의 키값보다 작고, 오른쪽은 루트 노드의 키값보다 크다.
+4. 중위순회를 하면 오름차순으로 정렬된 키 값을 얻을 수 있다.
+
+#### 8.5.1. Search (탐색)
+![search](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile1.uf.tistory.com%2Fimage%2F2579E03F56E509273CD5C2) <br>
+출처 : https://swalloow.tistory.com/35 <br>
+
+1. 루트에서 시작
+2. `탐색할 키값 x`를 `루트 노드의 키값`과 비교한다. -> 맞다면 성공!
+	- `키값 x` < `루트 노드의 키값` : 왼쪽 서브트리에 대해서 탐색연산을 수행
+	- `키값 x` > `루트 노드의 키값` : 오른쪽 서브트리에 대해서 탐색연산을 수행
+3. 서브트리에 대해서 순환적으로 탐색 연산을 반복한다.
+
+
+#### 8.5.2. Insert (삽입)
+![insert](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile3.uf.tistory.com%2Fimage%2F2124664456E50A0A301E89) <br>
+출처 : https://swalloow.tistory.com/35 <br>
+
+1. 루트에서 시작
+2. 트리에서 삽입하려는 원소에 대한 탐색을 먼저 수행
+	- 탐색이 성공하면 이미 같은 원소가 트리에 있으므로 종료 (유일한 키)
+	- 탐색이 실패하면 탐색이 끝난 지점에 노드를 삽입
 
 ## 9. Graph (그래프)
 그래프는 `정점(Vertex)`와 `간선(Edge)`로 이루어진 자료구조이다. <br>
