@@ -1291,6 +1291,29 @@ get() | list의 특정 위치에 있는 원소를 반환하는 연산
 	
 
 ## 8. Tree (트리)
+비선형 구조이며, 원소들 간의 `1 : n` 관계를 가지는 자료구조이다. 다른 말로 계층형 자료구조라고도 한다. <br>
+
+### 8.1. Tree의 명칭들
+![Tree](https://gmlwjd9405.github.io/images/data-structure-tree/tree-terms.png) <br>
+출처 : https://gmlwjd9405.github.io/2018/08/12/data-structure-tree.html <br>
+
+보통 트리는 `노드`와 `간선`으로 이루어져 있으며 `나무모양`을 띄고 있다. <br><br>
+
+명칭 | 설명
+---|---
+루트노드 | 부모가 없는 노드, 트리는 단 하나의 루트 노드만 가짐
+단말노드 | 자식이 없는 노드, 말단 노드 혹은 잎 노드로 불린다.
+부모노드 | 자식의 부모가 부모노드이다.
+자식노드 | 부모의 자식들이 자식노드이다.
+서브트리(subTree) | 부모노드와 연결된 간선을 끊었을 때 생성되는 Tree
+형제(Sibling) | 같은 부모를 가지는 노드
+차수(degree) | 노드에 연결된 자식노드의 수
+높이(height) | 루트 노드에서 노드에 이르는 간선의 수
+레벨(Level) | 트리의 특정 깊이를 가지는 노드의 집합
+트리의 차수 | 트리의 최대 차수를 말한다.
+트리의 높이 | 트리의 최대 높이를 말한다.
+
+
 ## 9. Graph (그래프)
 그래프는 `정점(Vertex)`와 `간선(Edge)`로 이루어진 자료구조이다. <br>
 ![graph](https://www.geeksforgeeks.org/wp-content/uploads/undirectedgraph.png) <br>
