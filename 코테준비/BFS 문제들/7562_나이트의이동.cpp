@@ -5,8 +5,8 @@ using namespace std;
 
 int dx[] = { -2,-1,-2,-1,1,2,1,2 };
 int dy[] = { -1,-2,1,2,-2,-1,2,1 };
-int a[MAX_SIZE][MAX_SIZE];  // √ºΩ∫∆«
-bool c[MAX_SIZE][MAX_SIZE]; // πÊπÆø©∫Œ
+int a[MAX_SIZE][MAX_SIZE];  // Ï≤¥Ïä§Ìåê
+bool c[MAX_SIZE][MAX_SIZE]; // 
 
 void initialize()
 {
