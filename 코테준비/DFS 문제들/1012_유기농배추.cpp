@@ -50,7 +50,7 @@ int main()
 		//fill(&a[0][0], &a[MAX_SIZE][MAX_SIZE], 0);
 		initialize();
 
-		int cnt = 0; //  ¹èÃß ÈòÁö··ÀÌ ¼ö
+		int cnt = 0; //  ë°°ì¶” í°ì§€ë ì´ ìˆ˜
 		vector<pair<int, int>> pos;
 
 		cin >> M >> N >> K;
