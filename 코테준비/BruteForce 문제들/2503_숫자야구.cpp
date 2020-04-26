@@ -1,7 +1,7 @@
 // https://yabmoons.tistory.com/86
 
-// È¥ÀÚ Ç®·Á°í ÇßÁö¸¸, °è¼Ó ÁÖº¯À» µ¹°íÀÖ´Â ´À³¦ÀÌ µé¾î¼­ °á±¹ Âü°íÇÏ°Ô ‰ç´Ù.
-// Áú¹®À» ÇßÀ» ¶§, Á¤´äÀÌ ¾Æ´Ñ °ÍµéÀ» Á¦¿Ü½ÃÅ°´Â ºÎºÐÀÌ ¾î·Á¿ü´Ù...
+// í˜¼ìž í’€ë ¤ê³  í–ˆì§€ë§Œ, ê³„ì† ì£¼ë³€ì„ ëŒê³ ìžˆëŠ” ëŠë‚Œì´ ë“¤ì–´ì„œ ê²°êµ­ ì°¸ê³ í•˜ì˜€ë‹¤.
+// ì§ˆë¬¸ì„ í–ˆì„ ë•Œ, ì •ë‹µì´ ì•„ë‹Œ ê²ƒë“¤ì„ ì œì™¸ì‹œí‚¤ëŠ” ë¶€ë¶„ì´ ì–´ë ¤ì› ë‹¤...
 #include <iostream>
 #include <vector>
 #include <string>
@@ -24,7 +24,7 @@ int main()
 	//freopen("input.txt", "r", stdin);
 	memset(check, true, sizeof(check));
 
-	// ³ª¿Ã ¼ö ¾ø´Â Á¤´äÀº ¹Ì¸® Áö¿öÁØ´Ù.
+	// ë‚˜ì˜¬ ìˆ˜ ì—†ëŠ” ì •ë‹µì€ ë¯¸ë¦¬ ì§€ì›Œì¤€ë‹¤.
 	for (int i = 123; i <= 999; i++)
 	{
 		string str = to_string(i);
@@ -32,7 +32,7 @@ int main()
 		if (str[0] == '0' || str[1] == '0' || str[2] == '0') check[i] = false;
 	}
 
-	// ÀÔ·Â
+	// ìž…ë ¥
 	cin >> n;
 	while (n--)
 	{
@@ -46,7 +46,7 @@ int main()
 		question.push_back(g);
 	}
 
-	// Áú¹®µé°ú ºñ±³ÇØ¼­ ³ª¿Ã ¼ö ¾ø´Â °æ¿ìµéÀ» Áö¿öÁØ´Ù.
+	// ì§ˆë¬¸ë“¤ê³¼ ë¹„êµí•´ì„œ ë‚˜ì˜¬ ìˆ˜ ì—†ëŠ” ê²½ìš°ë“¤ì„ ì§€ì›Œì¤€ë‹¤.
 	for (int i = 0; i < question.size(); i++)
 	{
 		int num = question[i].number;
@@ -71,13 +71,13 @@ int main()
 					}
 				}
 
-				// Á¤´äÀÌ¶ó°í »ý°¢ÇÑ ÈÄº¸°¡ ¸Â´ÂÁö Ã¼Å©, ¾Æ´Ñ °ÍµéÀº Áö¿ì±â
+				// ì •ë‹µì´ë¼ê³  ìƒê°í•œ í›„ë³´ê°€ ë§žëŠ”ì§€ ì²´í¬, ì•„ë‹Œ ê²ƒë“¤ì€ ì§€ìš°ê¸°
 				if (strike != temp_strike || ball != temp_ball) check[j] = false;
 			}
 		}
 	}
 
-	// ¸ðµç Áú¹®µéÀÇ °ËÁõÀ» È®ÀÎÇÑ ÈÄ¿¡µµ »ì¾Æ³²Àº ¼ýÀÚµéÀº Á¤´äÀÌ´Ù.
+	// ëª¨ë“  ì§ˆë¬¸ë“¤ì˜ ê²€ì¦ì„ í™•ì¸í•œ í›„ì—ë„ ì‚´ì•„ë‚¨ì€ ìˆ«ìžë“¤ì€ ì •ë‹µì´ë‹¤.
 	int ans = 0;
 	for (int i = 123; i <= 999; i++)
 	{
