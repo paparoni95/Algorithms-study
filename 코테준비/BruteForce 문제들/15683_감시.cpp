@@ -1,16 +1,16 @@
 // https://yabmoons.tistory.com/46
-// ¹®Á¦´Â ±İ¹æ ÀÌÇØ‰çÀ¸³ª, CCTVÀÇ ¸ğµç °æ¿ì¸¦ °í·ÁÇÏ´Â ºÎºĞÀÇ ±¸ÇöÀÌ ±î´Ù·Î¿ü´Ù.
-// ³ªÁß¿¡ ´Ù½Ã Ç®¾îº¸ÀÚ.
+// ë¬¸ì œëŠ” ê¸ˆë°© ì´í•´ë¬ì§€ë§Œ, CCTVì˜ ëª¨ë“  ê²½ìš°ë¥¼ ê³ ë ¤í•˜ëŠ” ë¶€ë¶„ì˜ êµ¬í˜„ì´ ê¹Œë‹¤ë¡œì› ë‹¤.
+// ë‚˜ì¤‘ì— ë‹¤ì‹œ í’€ì–´ë³´ì.
 #include <iostream>
 #include <vector>
 #include <algorithm>
 using namespace std;
 
 int N, M, ans;
-int a[9][9];   // ¸Ê
-int c_a[9][9]; // º¹»ç ¸Ê
+int a[9][9];   // ë§µ
+int c_a[9][9]; // ë³µì‚¬ ë§µ
 
-vector<pair<pair<int,int>, pair<int,int>>> v; // CCTV [(x,y),(¹øÈ£,¹æÇâ)]
+vector<pair<pair<int,int>, pair<int,int>>> v; // CCTV [(x,y),(ë²ˆí˜¸,ë°©í–¥)]
 
 void copy_Map()
 {
@@ -165,14 +165,14 @@ int numOfSecretArea()
 	return total;
 }
 
-// CCTV ¹æÇâÀ» ¹Ì¸® Á¤ÇØ³õ°í, ±× »óÅÂ¿¡¼­ »ç°¢Áö´ë¸¦ ±¸ÇØ¼­ ÀúÀåÇÑ´Ù. (Àç±Í)
+// CCTV ë°©í–¥ì„ ë¯¸ë¦¬ ì •í•´ë†“ê³ , ê·¸ ìƒíƒœì—ì„œ ì‚¬ê°ì§€ëŒ€ë¥¼ êµ¬í•´ì„œ ì €ì¥í•œë‹¤. (ì¬ê·€)
 void set_CCTV_Direction(int cnt)
 {
 	if (cnt == v.size())
 	{
-		// Á¤ÇØÁø ¹æÇâ´ë·Î CCTV¸¦ °Ë»çÇÏ°í,
+		// ì •í•´ì§„ ë°©í–¥ëŒ€ë¡œ CCTVë¥¼ ê²€ì‚¬í•˜ê³ ,
 		check_cctv_area();
-		// »ç°¢Áö´ë¸¦ ±¸ÇØ¼­ ÃÖ¼Ò Å©±â¸¦ ±¸ÇÑ´Ù.
+		// ì‚¬ê°ì§€ëŒ€ë¥¼ êµ¬í•´ì„œ ìµœì†Œ í¬ê¸°ë¥¼ êµ¬í•œë‹¤.
 		ans = min(ans, numOfSecretArea());
 		return;
 	}
