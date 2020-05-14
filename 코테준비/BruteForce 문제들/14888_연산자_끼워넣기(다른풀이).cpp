@@ -7,7 +7,7 @@ long long min_value = 1000000000;
 
 void solve(vector<int>& v, int idx, long long sum, int plus, int minus, int mul, int div)
 {
-	// ºÒ°¡´ÉÇÑ °æ¿ì
+	// ë¶ˆê°€ëŠ¥í•œ ê²½ìš°
 	if (plus < 0 || minus < 0 || mul < 0 || div < 0) return;
 
 	if (v.size() == idx)
