@@ -1,4 +1,6 @@
 // https://mygumi.tistory.com/243
+
+// ì–´ì²˜í”¼ 2ê°œë¥¼ ë½‘ëŠ” ê²½ìš°ë¼ë©´ 2ì¤‘ í¬ë¬¸ìœ¼ë¡œ êµ¬í˜„ì´ ê°€ëŠ¥í•˜ë‹¤. êµ³ì´ permutationì— ì˜ì¡´í•˜ì§€ ì•Šì•„ë„...
 #include <iostream>
 #include <vector>
 #include <cmath>
@@ -29,14 +31,14 @@ void divideTeam()
 	vector<int> a(N / 2 + 1);
 	vector<int> b(N / 2 + 1);
 	int ai = 1, bi = 1;
-	// ±¸ÇØÁø °æ¿ì¿¡¼­ÀÇ µÎ ÆÀÀ» ¹è¿­·Î ³ªÅ¸³½´Ù.
+	// êµ¬í•´ì§„ ê²½ìš°ì—ì„œì˜ ë‘ íŒ€ì„ ë°°ì—´ë¡œ ë‚˜íƒ€ë‚¸ë‹¤.
 	for (int i = 1; i <= N; i++)
 	{
 		if (visited[i]) a[ai++] = i;
 		else b[bi++] = i;
 	}
 
-	// µÎ ÆÀÀÇ ´É·Â Â÷ÀÌ¸¦ ±¸ÇÑ´Ù.
+	// ë‘ íŒ€ì˜ ëŠ¥ë ¥ ì°¨ì´ë¥¼ êµ¬í•œë‹¤.
 	int a_stat = getStat(a);
 	int b_stat = getStat(b);
 	int diff = abs(a_stat - b_stat);
@@ -44,7 +46,7 @@ void divideTeam()
 	ans = min(ans, diff);
 }
 
-// µÎ ÆÀÀ¸·Î ³ª´«´Ù.
+// ë‘ íŒ€ìœ¼ë¡œ ë‚˜ëˆˆë‹¤.
 void dfs(int v, int len)
 {
 	if (len == N / 2)
