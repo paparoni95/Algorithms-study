@@ -1,5 +1,5 @@
 // https://pluslab.tistory.com/73
-// string¿¡ ´ëÇØ¼­ Àß Á¤¸®µÈ °Í °°¾Æ¼­ °¡Á®¿Ô´Ù.
+// stringì— ëŒ€í•´ì„œ ì˜ ì •ë¦¬ëœ ê²ƒ ê°™ì•„ì„œ ê°€ì ¸ì™”ë‹¤.
 
 #include <iostream>
 #include <string>
@@ -7,11 +7,11 @@ using namespace std;
 
 void strTest1()
 {
-	// stringÀÇ ±âº»ÀûÀÎ ÀÔÃâ·Â ±â´Éµé
+	// stringì˜ ê¸°ë³¸ì ì¸ ì…ì¶œë ¥ ê¸°ëŠ¥ë“¤
 	cout << "strTest1()" << endl;
 
 	string str;
-	cout << "string ÀÔ·Â: ";
+	cout << "string ì…ë ¥: ";
 	cin >> str;
 	cout << "str : " << str << endl;
 }
@@ -20,7 +20,7 @@ void strTest2()
 {
 	cout << "strTest2()" << endl;
 
-	// string »ı¼º ¹× ÃÊ±âÈ­
+	// string ìƒì„± ë° ì´ˆê¸°í™”
 
 	string str1 = "This is string 1.";
 	string str2("This is string 2.");
@@ -35,13 +35,13 @@ void strTest3()
 {
 	cout << "strTest3()" << endl;
 
-	// string¿¡ ¹®ÀÚ ¶Ç´Â ¹®ÀÚ¿­ Ãß°¡
+	// stringì— ë¬¸ì ë˜ëŠ” ë¬¸ìì—´ ì¶”ê°€
 	string str = "Test";
 	cout << "str : "<< str << endl;
 	str += " Message.";
 	cout << "str : " << str << endl;
 
-	str.append(" Appended string."); // ¹®ÀÚ¿­ÀÇ µÚ¿¡ ³»¿ëÀ» Ãß°¡
+	str.append(" Appended string."); // ë¬¸ìì—´ì˜ ë’¤ì— ë‚´ìš©ì„ ì¶”ê°€
 	cout << "str : " << str << endl;
 
 	string str2 = str + " new message";
@@ -52,7 +52,7 @@ void strTest4()
 {
 	cout << "strTest4()" << endl;
 
-	// stringÀÇ ±æÀÌ ±¸ÇÏ±â
+	// stringì˜ ê¸¸ì´ êµ¬í•˜ê¸°
 	string str = "This is Test Message.";
 	cout << "str : " << str << endl;
 	cout << "str.size() : " << str.size() << endl;
@@ -68,21 +68,21 @@ void strTest5()
 {
 	cout << "strTest5()" << endl;
 
-	// char¹è¿­(C¿¡¼­ÀÇ string)¿¡¼­ string »ı¼ºÇÏ±â
-	char message[] = "This is a C style string."; // Null ¹®ÀÚ°¡ Æ÷ÇÔµÊ
+	// charë°°ì—´(Cì—ì„œì˜ string)ì—ì„œ string ìƒì„±í•˜ê¸°
+	char message[] = "This is a C style string."; // Null ë¬¸ìê°€ í¬í•¨ë¨
 
-	/* C¾ğ¾î¿¡¼­´Â stringÀÌ µû·Î ¾ø±â ¶§¹®¿¡ char¹è¿­·Î Ç¥Çö
+	/* Cì–¸ì–´ì—ì„œëŠ” stringì´ ë”°ë¡œ ì—†ê¸° ë•Œë¬¸ì— charë°°ì—´ë¡œ í‘œí˜„
 	   
-	   ÁÖÀÇÇÒ Á¡Àº C¾ğ¾î¿¡¼­ char¹è¿­·Î stringÀ» Ç¥ÇöÇÒ ¶§´Â
-	   stringÀÇ ³¡ µÚ¿¡ \0À» ³Ö¾îÁÖ±â ¶§¹®¿¡, ±×·¸Áö ¾ÊÀº ¹è¿­Àº string
-	   À¸·ÎÀÇ º¯È¯ÀÌ Á¦´ë·Î µ¿ÀÛÇÏÁö ¾Ê´Â´Ù.*/
+	   ì£¼ì˜í•  ì ì€ Cì–¸ì–´ì—ì„œ charë°°ì—´ë¡œ stringì„ í‘œí˜„í•  ë•ŒëŠ”
+	   stringì˜ ë ë’¤ì— \0ì„ ë„£ì–´ì£¼ê¸° ë•Œë¬¸ì—, ê·¸ë ‡ì§€ ì•Šì€ ë°°ì—´ì€ string
+	   ìœ¼ë¡œì˜ ë³€í™˜ì´ ì œëŒ€ë¡œ ë™ì‘í•˜ì§€ ì•ŠëŠ”ë‹¤.*/
 	string str(message);
 	cout << "char array : " << message << endl;
 	cout << "char array length : " << strlen(message) << endl;
 	cout << "string : " << str << endl;
 	cout << "string length : " << str.length() << endl;
 
-	// char ¹è¿­¿¡¼­ ³Î¹®ÀÚ¸¦ ³Ö¾îÁÖÁö ¾ÊÀ¸¸é ¾²·¡±â °ªÀÌ Ãâ·ÂµÊ.
+	// char ë°°ì—´ì—ì„œ ë„ë¬¸ìë¥¼ ë„£ì–´ì£¼ì§€ ì•Šìœ¼ë©´ ì“°ë˜ê¸° ê°’ì´ ì¶œë ¥ë¨.
 	char noCstring[] = { 'N', 'O' };
 	string str2(noCstring);
 	cout << str2 << endl;
@@ -92,12 +92,12 @@ void strTest6()
 {
 	cout << "strTest6()" << endl;
 
-	// stringÀÇ µ¿Àû »ı¼º ¹× ¹İÈ¯
-	string* str = new string("µ¿Àû »ı¼ºµÈ ¸Ş½ÃÁö");
-	cout << "str address : " << str << endl; // Æ÷ÀÎÅÍÀÇ ÁÖ¼Ò°¡ Ãâ·Â
+	// stringì˜ ë™ì  ìƒì„± ë° ë°˜í™˜
+	string* str = new string("ë™ì  ìƒì„±ëœ ë©”ì‹œì§€");
+	cout << "str address : " << str << endl; // í¬ì¸í„°ì˜ ì£¼ì†Œê°€ ì¶œë ¥
 	cout << "str : " << *str << endl;
 
-	str->append(". Æ÷ÀÎÅÍÀÌ±â ¶§¹®¿¡ append´Â ÀÌ·¸°Ô ¼öÇà");
+	str->append(". í¬ì¸í„°ì´ê¸° ë•Œë¬¸ì— appendëŠ” ì´ë ‡ê²Œ ìˆ˜í–‰");
 	cout << "str address : " << str << endl;
 	cout << "str : " << *str << endl;
 	delete str;
@@ -107,18 +107,18 @@ void strTest7()
 {
 	cout << "strTest7()" << endl;
 
-	// stringÀ» ÇÑ ÁÙ ÀüÃ¼·Î ÀÔ·Â¹Ş±â
+	// stringì„ í•œ ì¤„ ì „ì²´ë¡œ ì…ë ¥ë°›ê¸°
 
-	/* stringÀ» ÀÔ·Â¹ŞÀ» ¶§ ¶ç¾î¾²±â°¡ ÀÖÀ¸¸é ±× ¾Õ±îÁö¸¸ ÀÔ·Â¹Ş´Â´Ù.*/
+	/* stringì„ ì…ë ¥ë°›ì„ ë•Œ ë„ì–´ì“°ê¸°ê°€ ìˆìœ¼ë©´ ê·¸ ì•ê¹Œì§€ë§Œ ì…ë ¥ë°›ëŠ”ë‹¤.*/
 	string str1, str2;
 	cin >> str1 >> str2;
 	cout << "str1 : " << str1 << endl;
 	cout << "str2 : " << str2 << endl;
 
-	// ¹öÆÛ¿¡ '\n'ÀÌ ³²¾ÆÀÖ°Ô µÇ¹Ç·Î ÀÔ·Â ¹öÆÛ¸¦ ÃÊ±âÈ­ ÇØÁØ´Ù.
+	// ë²„í¼ì— '\n'ì´ ë‚¨ì•„ìˆê²Œ ë˜ë¯€ë¡œ ì…ë ¥ ë²„í¼ë¥¼ ì´ˆê¸°í™” í•´ì¤€ë‹¤.
 	while (getchar() != '\n') {}
 
-	getline(cin, str1, '\n');  // '\n'ÀÌ ³ª¿Ã ¶§±îÁö ÀÔ·ÂÀ» ¹Şµµ·Ï ÁöÁ¤
+	getline(cin, str1, '\n');  // '\n'ì´ ë‚˜ì˜¬ ë•Œê¹Œì§€ ì…ë ¥ì„ ë°›ë„ë¡ ì§€ì •
 	cout << "str1 : " << str1 << endl;
 	cout << "str2 : " << str2 << endl;
 }
@@ -127,13 +127,13 @@ void strTest8()
 {
 	cout << "strTest8()" << endl;
 
-	// string Áß Æ¯Á¤ À§Ä¡ÀÇ ¹®ÀÚ °¡Á®¿À±â
+	// string ì¤‘ íŠ¹ì • ìœ„ì¹˜ì˜ ë¬¸ì ê°€ì ¸ì˜¤ê¸°
 
-	/* at()À» »ç¿ëÇÏ¸é ÇØ´ç ÀÎµ¦½º¿¡ ÀÖ´Â ¹®ÀÚ¸¦ charÇüÅÂ·Î ¹İÈ¯¹Ş±â °¡´É
-	   ÀÌ¶§, ¹è¿­Ã³·³ ÀÎµ¦½º´Â 0ºÎÅÍ ½ÃÀÛÇÑ´Ù.
-	   ¶Ç at()Àº ¹üÀ§¸¦ Ã¼Å©ÇÏ´Â ±â´Éµµ ÇÑ´Ù.
+	/* at()ì„ ì‚¬ìš©í•˜ë©´ í•´ë‹¹ ì¸ë±ìŠ¤ì— ìˆëŠ” ë¬¸ìë¥¼ charí˜•íƒœë¡œ ë°˜í™˜ë°›ê¸° ê°€ëŠ¥
+	   ì´ë•Œ, ë°°ì—´ì²˜ëŸ¼ ì¸ë±ìŠ¤ëŠ” 0ë¶€í„° ì‹œì‘í•œë‹¤.
+	   ë˜ at()ì€ ë²”ìœ„ë¥¼ ì²´í¬í•˜ëŠ” ê¸°ëŠ¥ë„ í•œë‹¤.
 	   
-	   ¹è¿­Ã³·³ str[4]·Î »ç¿ëÇÒ ¼ö ÀÖÁö¸¸, ¹üÀ§ Ã¼Å©´Â ÇÏÁö ¾Ê´Â´Ù.
+	   ë°°ì—´ì²˜ëŸ¼ str[4]ë¡œ ì‚¬ìš©í•  ìˆ˜ ìˆì§€ë§Œ, ë²”ìœ„ ì²´í¬ëŠ” í•˜ì§€ ì•ŠëŠ”ë‹¤.
 	*/
 	string str = "Test Message for index";
 
@@ -152,7 +152,7 @@ void strTest9()
 {
 	cout << "strTest9()" << endl;
 
-	// string°£ ¹®ÀÚ¿­ ºñ±³
+	// stringê°„ ë¬¸ìì—´ ë¹„êµ
 	string str1 = "abcd";
 	string str2 = "abde";
 	string str3 = "abcd";
@@ -161,43 +161,43 @@ void strTest9()
 	cout << "str2 : " << str2 << endl;
 	cout << "str3 : " << str3 << endl << endl;
 
-	/* compare¸¦ »ç¿ëÇÏ¸é ¹®ÀÚ¿­À» ºñ±³ÇÒ ¼ö ÀÖ´Ù. 
-	   intÇüÀ» ¹İÈ¯ÇÏ¸é¼­
+	/* compareë¥¼ ì‚¬ìš©í•˜ë©´ ë¬¸ìì—´ì„ ë¹„êµí•  ìˆ˜ ìˆë‹¤. 
+	   intí˜•ì„ ë°˜í™˜í•˜ë©´ì„œ
 	   
-	   -1À» ¹İÈ¯ÇÏ¸é »çÀüÀûÀ¸·Î ´õ ¾Õ¿¡ ÀÖ´Ù.
-	    0À» ¹İÈ¯ÇÏ¸é µ¿ÀÏÇÑ ¹®ÀÚ¿­ÀÌ´Ù.
-		1À» ¹İÈ¯ÇÏ¸é »çÀüÀûÀ¸·Î ´õ µÚ¿¡ ÀÖ´Ù.
+	   -1ì„ ë°˜í™˜í•˜ë©´ ì‚¬ì „ì ìœ¼ë¡œ ë” ì•ì— ìˆë‹¤.
+	    0ì„ ë°˜í™˜í•˜ë©´ ë™ì¼í•œ ë¬¸ìì—´ì´ë‹¤.
+		1ì„ ë°˜í™˜í•˜ë©´ ì‚¬ì „ì ìœ¼ë¡œ ë” ë’¤ì— ìˆë‹¤.
     */
 	int cmp = str1.compare(str2);
-	cout << "str1°ú str2 ºñ±³ : " << cmp << endl;
+	cout << "str1ê³¼ str2 ë¹„êµ : " << cmp << endl;
 
 	cmp = str2.compare(str1);
-	cout << "str2¿Í str1 ºñ±³ : " << cmp << endl;
+	cout << "str2ì™€ str1 ë¹„êµ : " << cmp << endl;
 
 	cmp = str1.compare(str3);
-	cout << "str1°ú str3 ºñ±³ : " << cmp << endl;
+	cout << "str1ê³¼ str3 ë¹„êµ : " << cmp << endl;
 
 	cmp = str1.compare(str2);
-	if (cmp == 0) cout << "µ¿ÀÏÇÑ ¹®ÀÚ¿­" << endl;
-	else if (cmp < 0) cout << str1 << "ÀÌ " << str2 << "º¸´Ù »çÀüÀûÀ¸·Î ¾Õ" << endl;
-	else cout << str1 << "ÀÌ " << str2 << "º¸´Ù »çÀüÀûÀ¸·Î µÚ" << endl;
+	if (cmp == 0) cout << "ë™ì¼í•œ ë¬¸ìì—´" << endl;
+	else if (cmp < 0) cout << str1 << "ì´ " << str2 << "ë³´ë‹¤ ì‚¬ì „ì ìœ¼ë¡œ ì•" << endl;
+	else cout << str1 << "ì´ " << str2 << "ë³´ë‹¤ ì‚¬ì „ì ìœ¼ë¡œ ë’¤" << endl;
 
-	if (str1 == str3) cout << "µ¿ÀÏÇÑ ¹®ÀÚ¿­" << endl;
-	else cout << "´Ù¸¥ ¹®ÀÚ¿­" << endl;
+	if (str1 == str3) cout << "ë™ì¼í•œ ë¬¸ìì—´" << endl;
+	else cout << "ë‹¤ë¥¸ ë¬¸ìì—´" << endl;
 
-	if (str1 == str2)cout << "µ¿ÀÏÇÑ ¹®ÀÚ¿­" << endl;
-	else cout << "´Ù¸¥ ¹®ÀÚ¿­" << endl;
+	if (str1 == str2)cout << "ë™ì¼í•œ ë¬¸ìì—´" << endl;
+	else cout << "ë‹¤ë¥¸ ë¬¸ìì—´" << endl;
 }
 
 void strTest10()
 {
 	cout << "strTest10()" << endl;
 
-	// string º¹»ç
+	// string ë³µì‚¬
 	string str1 = "string 1.";
-	/* =¸¦ ÅëÇØ strÀ» º¹»çÇÒ ¼ö ÀÖ´Ù.
-	   ÀÌ¶§ Æ÷ÀÎÅÍ°ª¸¸ º¹»çµÇ´Â °ÍÀÌ ¾Æ´Ï¶ó, °ªµµ º¹»çµÇ°í
-	   »õ·Î¿î °´Ã¼°¡ ¸¸µé¾îÁø´Ù.
+	/* =ë¥¼ í†µí•´ strì„ ë³µì‚¬í•  ìˆ˜ ìˆë‹¤.
+	   ì´ë•Œ í¬ì¸í„°ê°’ë§Œ ë³µì‚¬ë˜ëŠ” ê²ƒì´ ì•„ë‹ˆë¼, ê°’ë„ ë³µì‚¬ë˜ê³ 
+	   ìƒˆë¡œìš´ ê°ì²´ê°€ ë§Œë“¤ì–´ì§„ë‹¤.
 	*/
 	string str2 = str1;
 	str1 += " appended";
@@ -209,16 +209,16 @@ void strTest11()
 {
 	cout << "strTest11()" << endl;
 
-	// string Áß°£¿¡ ¹®ÀÚ¿­ Ãß°¡ ¹× °Ë»ö
+	// string ì¤‘ê°„ì— ë¬¸ìì—´ ì¶”ê°€ ë° ê²€ìƒ‰
 	string str = "Test for strTest11";
 	cout << "str : " << str << endl;
 
-	/* find¸¦ ÅëÇØ string¿¡ ÇØ´ç ¹®ÀÚ¿­ÀÌ ÀÖ´ÂÁö È®ÀÎÇÒ ¼ö ÀÖ´Ù.
-	   ¸¸¾à ÇØ´ç ¹®ÀÚ¿­ÀÌ ¾ø´Â °æ¿ì string::npos¸¦ ¹İÈ¯ÇÑ´Ù.
-	   ¹®ÀÚ¿­ÀÌ ÀÖ´Â °æ¿ì´Â ÇØ´ç ¹®ÀÚ¿­ÀÌ ½ÃÀÛÇÏ´Â ÀÎµ¦½º¸¦ ¹İÈ¯
+	/* findë¥¼ í†µí•´ stringì— í•´ë‹¹ ë¬¸ìì—´ì´ ìˆëŠ”ì§€ í™•ì¸í•  ìˆ˜ ìˆë‹¤.
+	   ë§Œì•½ í•´ë‹¹ ë¬¸ìì—´ì´ ì—†ëŠ” ê²½ìš° string::nposë¥¼ ë°˜í™˜í•œë‹¤.
+	   ë¬¸ìì—´ì´ ìˆëŠ” ê²½ìš°ëŠ” í•´ë‹¹ ë¬¸ìì—´ì´ ì‹œì‘í•˜ëŠ” ì¸ë±ìŠ¤ë¥¼ ë°˜í™˜
 	   
-	   findÀÇ ÀÎÀÚ·Î Ã£À» ¹®ÀÚ¿­¸¸ ÁÖ´Â °æ¿ì ¹®ÀÚ¿­ÀÇ ½ÃÀÛºÎÅÍ °Ë»ö
-	   µÎ¹øÂ° ÀÎÀÚ·Î °Ë»öÀ» ½ÃÀÛÇÒ ÀÎµ¦½º °ªÀ» ÁöÁ¤ÇÒ ¼öµµ ÀÖ´Ù.
+	   findì˜ ì¸ìë¡œ ì°¾ì„ ë¬¸ìì—´ë§Œ ì£¼ëŠ” ê²½ìš° ë¬¸ìì—´ì˜ ì‹œì‘ë¶€í„° ê²€ìƒ‰
+	   ë‘ë²ˆì§¸ ì¸ìë¡œ ê²€ìƒ‰ì„ ì‹œì‘í•  ì¸ë±ìŠ¤ ê°’ì„ ì§€ì •í•  ìˆ˜ë„ ìˆë‹¤.
 	*/
 	int pos;
 	if ((pos = str.find("for")) != string::npos)
@@ -240,17 +240,57 @@ void strTest11()
 
 void strTest12()
 {
-	cout << "strTest12 : substring" << endl;
+	cout << "strTest12()" << endl;
 
 	string str = "Test message for strTest12.";
-	int pos;
-
 	cout << "str : " << str << endl;
+
+	/* substringì€ ë¬¸ìì—´ ë‚´ì—ì„œ [pos, pos + count) ë¶€ë¶„ë¬¸ìì—´ì„ ë°˜í™˜í•œë‹¤.
+	   
+	   ì•„ë˜ì˜ ë¶€ë¶„ì€ messageë¥¼ ê²€ìƒ‰í•´ì„œ message ì´í›„ì˜ ë¬¸ìì—´ë§Œ ì €ì¥í•˜ê³ 
+	   ì´ë¥¼ ì¶œë ¥í•˜ë„ë¡ í•œë‹¤.
+	*/
+	int pos;
 	if ((pos = str.find("message")) != string::npos)
 	{
+		cout << "str.length() : " << str.length() << endl;
+		cout << "pos : " << pos << endl;
+		cout << "str.length() - pos : " << str.length() - pos << endl;
 		string str2 = str.substr(pos, str.length() - pos);
 		cout << "str2 : " << str2 << endl;
 	}
+}
+
+void strTest13()
+{
+	cout << "strTest13()" << endl;
+
+	// stringê³¼ ìˆ«ì ê°„ ë³€í™˜
+
+	/* Cì–¸ì–´ì—ì„œëŠ” ë³´í†µ atoi, itoa, atof, ftoa ë“±ì„ ì‚¬ìš©í–ˆì§€ë§Œ,
+	   C++ì—ì„œëŠ” stringì´ ìˆìœ¼ë¯€ë¡œ stoi, stofë“±ì„ ì‚¬ìš©í•´ì£¼ë©´ ëœë‹¤.
+	   
+	   íŠ¹ì´í•œ ì ì€ ìˆ«ìë¥¼ ë¬¸ìì—´ë¡œ ë³€í™˜í•  ë•ŒëŠ” ëª¨ë‘ to_stringì„ ì‚¬ìš©í•´ì£¼ë©´ ëœë‹¤.
+	*/
+	string str = "1234";
+	int num = stoi(str);
+	cout << "str : " << str << endl;
+	cout << "num : " << num << endl << endl;
+
+	num = 3456;
+	str = to_string(num);
+	cout << "str : " << str << endl;
+	cout << "num : " << num << endl << endl;
+
+	str = "123.32";
+	float numf = stof(str);
+	cout << "str : " << str << endl;
+	cout << "numf : " << numf << endl << endl;
+
+	numf = 555.12;
+	str = to_string(numf);
+	cout << "str : " << str << endl;
+	cout << "numf : " << numf << endl << endl;
 }
 
 int main()
@@ -266,5 +306,7 @@ int main()
 	//strTest9();
 	//strTest10();
 	//strTest11();
+	//strTest12();
+	//strTest13();
 	return 0;
 }
