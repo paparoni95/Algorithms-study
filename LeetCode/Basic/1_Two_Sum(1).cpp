@@ -2,8 +2,8 @@ class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
         /* BruteForce
-           시간 : O(N^2)
-           공간 : O(1)
+           TimeComplexity : O(N^2)
+           SpaceComplexity : O(1)
         */
         vector<int> answer(2);
 
