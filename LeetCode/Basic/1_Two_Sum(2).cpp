@@ -2,11 +2,11 @@ class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
         /*
-        ÇØ½¬¸Ê »ç¿ë, ·çÇÁ 1°³¸¦ µ¹¸é¼­ ÀÌ¹Ì ºÃ´ø °ªÀ» ÇØ½¬¸Ê¿¡ ³Ö´Â´Ù.
-            - ½Ã°£: O(N)
-            - °ø°£: O(N)
+        í•´ì‰¬ë§µ ì‚¬ìš©, ë£¨í”„ 1ê°œë¥¼ ëŒë©´ì„œ ì´ë¯¸ ë´¤ë˜ ê°’ì„ í•´ì‰¬ë§µì— ë„£ëŠ”ë‹¤.
+            - TimeComplexity : O(N)
+            - SpaceComplexity: O(N)
         */
-        unordered_map<int, int> hash; // Å°-°ª, º§·ù-ÀÎµ¦½º
+        unordered_map<int, int> hash; // í‚¤-ê°’, ë²¨ë¥˜-ì¸ë±ìŠ¤
         vector<int> answer(2);
 
         for (int i = 0; i < nums.size(); i++)
