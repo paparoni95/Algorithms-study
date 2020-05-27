@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<string> generateParenthesis(int n) {
-        //backtracking  recursion À¯Çü
+        //backtracking  recursion type
         vector<string> answer;
         DFS(n, 0, 0, "", answer);
         return answer;
