@@ -1,3 +1,8 @@
+// https://11001.tistory.com/23
+
+// ë‚´ê°€ í‘¼ ì½”ë“œë³´ë‹¤ ë” ë¹ ë¥¸ ì‹œê°„ì„ ë³´ì—¬ì¤€ë‹¤.
+// ì•„ë¬´ë˜ë„ ì‹œê°„ ì°¨ì´ê°€ ë‚˜ëŠ” ê²½ìš°ëŠ” 5 ê²½ê³„ì„ ì˜ ë‚´ë¶€ë¥¼ ì–´ë–»ê²Œ ì±„ìš°ëƒì— ë”°ë¼ ë‹¤ë¥¸ ê²ƒ ê°™ë‹¤.
+// ì¶”ê°€ì ìœ¼ë¡œ ìˆ˜ì‹ì„ ì¡°ê¸ˆ ì •ë¦¬í•´ì„œ í•„ìš”ì—†ëŠ” ë¶€ë¶„ë“¤ì„ ëŒë¦¬ì§€ ì•ŠëŠ” ê²ƒë„
 #include<iostream>
 #include<algorithm>
 #include<cstring>
@@ -15,7 +20,7 @@ void select_five_area(int x, int y, int d1, int d2)
 	memset(people, 0, sizeof(people));
 	memset(visited, 0, sizeof(visited));
 
-	// 2. 5¹ø ¼±°Å±¸ °æ°è¼±
+	// 2. 5ë²ˆ ì„ ê±°êµ¬ ê²½ê³„ì„ 
 	for (i = 0; i <= d1; ++i)
 	{
 		visited[x + i][y - i] = true;
@@ -29,7 +34,7 @@ void select_five_area(int x, int y, int d1, int d2)
 		people[FIVE] += board[x + i][y + i] + board[x + d1 + i][y - d1 + i];
 	}
 
-	// 3. 5¹ø ¼±°Å±¸ ³»ºÎ Å½»ö
+	// 3. 5ë²ˆ ì„ ê±°êµ¬ ë‚´ë¶€ íƒìƒ‰
 	for (i = 0; i < d1; ++i)
 	{
 		j = 0;
@@ -50,7 +55,7 @@ void select_five_area(int x, int y, int d1, int d2)
 			++j;
 		}
 	}
-	// 4. 1 ~ 4 ¼±°Å±¸ ¼±ÅÃ
+	// 4. 1 ~ 4 ì„ ê±°êµ¬ ì„ íƒ
 	for (i = 1; i <= N; ++i)
 	{
 		for (j = 1; j <= N; ++j)
@@ -63,7 +68,7 @@ void select_five_area(int x, int y, int d1, int d2)
 		}
 	}
 
-	// 5. °¡Àå ÀÛÀº ÃÖ´ë ÀÎ±¸, ÃÖ¼Ò ÀÎ±¸ÀÇ Â÷ÀÌ·Î °»½Å
+	// 5. ê°€ì¥ ì‘ì€ ìµœëŒ€ ì¸êµ¬, ìµœì†Œ ì¸êµ¬ì˜ ì°¨ì´ë¡œ ê°±ì‹ 
 	pair<int*, int*> p = minmax_element(people, people + 5);
 	ans = min(ans, int(*p.second - *p.first));
 }
@@ -72,7 +77,7 @@ void divide_area()
 {
 	int x, y, d1, d2;
 
-	// 1. °¡´ÉÇÑ À§Ä¡¿¡¼­ d1, d2¸¦ ´Ã¿©°¡¸ç ½Ãµµ
+	// 1. ê°€ëŠ¥í•œ ìœ„ì¹˜ì—ì„œ d1, d2ë¥¼ ëŠ˜ì—¬ê°€ë©° ì‹œë„
 	for (x = 1; x <= N - 2; ++x)
 	{
 		for (y = 2; y <= N - 1; ++y)
