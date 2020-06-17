@@ -1,7 +1,5 @@
 // https://yabmoons.tistory.com/99 글이 잘 정리되어 있고, 도움을 많이 받은 블로그입니다.
 
-// 조합에 대해서 공부
-
 // 왜 공부? : 브루트포스 알고리즘에서 가장 많이 사용되는 방식이며, 순열과 조합으로 모든 경우의 수를 계산해서 원하는 결과 값을 구하는 방법이다.
 
 /* 조합이란?
@@ -40,7 +38,7 @@ void DFS(int index, int cnt)
 
     for (int i = index; i < 5; i++)
     {
-        if (select[i] == true) continue;
+        if (select[i] == true) continue; // 선택했다면 그 부분은 넘어간다.
         select[i] = true;
         DFS(i, cnt + 1);
         select[i] = false;
