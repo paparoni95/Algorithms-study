@@ -24,6 +24,7 @@ void Solution(vector<char>& alpha, string password, int index, int cnt)
 {
 	if (cnt == L)
 	{
+		// 주어진 조건을 만족했는지?
 		if (IsRightPassword(password))
 		{
 			for (char ch : password)
@@ -34,17 +35,18 @@ void Solution(vector<char>& alpha, string password, int index, int cnt)
 		}
 		return;
 	}
-
+        
+	// 불가능한 영역일 경우
 	if (index >= alpha.size()) return;
 
-	// ������ ���
+	// 현재 단계에서 다음 단계로 나아가고자 할 때, 해야하는 일
 	Solution(alpha, password + alpha[index], index + 1, cnt + 1);
 	Solution(alpha, password, index + 1, cnt);
 }
 
 int main()
 {
-	freopen("input.txt", "r", stdin);
+	//freopen("input.txt", "r", stdin);
 	
 	cin >> L >> C;
 	
