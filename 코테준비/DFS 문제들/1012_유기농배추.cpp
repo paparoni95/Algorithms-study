@@ -73,7 +73,7 @@ int main()
 			}
 		}
 
-		cout << cnt << '\n';
+		cout << cnt << '\n'; // 개행을 넣어줘야 AC를 받을 수 있다.
 	}
 	return 0;
 }
