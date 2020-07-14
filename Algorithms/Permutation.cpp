@@ -1,52 +1,55 @@
+// https://yabmoons.tistory.com/100
+
+// 순열에 대해서 공부
+
+/* 순열이란?
+
+	말 그대로, 순서가 존재하는 열이다.
+	{1, 2, 3} 과 {1, 3, 2}의 결과는 다르다는 것!
+
+	C++ STL에서 next_permutation / prev_permutation을 통해서 쉽게 구현이 가능.
+
+	하지만, 재귀적으로 짜는 코드도 중요하다고 생각된다.
+
+	마찬가지로 5개중에서 3개를 뽑는다고 하면?
+	{1,2,3} {1,2,4} {1,2,5} {1,3,4} {1,3,5} ... {1,4,5}...
+	{2,1,3} {2,1,4} {2,1,5} {2,3,4} {2,3,5} {2,4,5}...
+	...
+
+    {1,2,3} != {2,1,3} 이 핵심
+*/
+
 #include <iostream>
 #include <vector>
-#include <algorithm>
 using namespace std;
 
-#define MAX 4
+int arr[5];
+bool select[5];
+vector<int> v;
 
-// next_permutation : 0(N)
-// prev_permutation : O(N)
-// all_permutation : O(N * N!)
+void DFS(int cnt)
+{
+	if (cnt == 3)
+	{
+		for (int i = 0; i < v.size(); i++) cout << v[i] << ' ';
+		cout << endl;
+		return;
+	}
+
+	for (int i = 0; i < 5; i++)
+	{
+		if (select[i] == true) continue;
+		select[i] = true;
+		v.push_back(arr[i]);
+		DFS(cnt + 1);
+		v.pop_back();
+		select[i] = false;
+	}
+}
 
 int main()
 {
-	vector<int> v(MAX);
-	for (int i = 0; i < MAX; i++)
-		v[i] = i + 1;
-
-	cout << "처음 순열은? " << endl;
-	for (int i = 0; i < MAX; i++)
-		cout << v[i] << ' ';
-	cout << endl;
-
-	cout << "다음 순열은? " << endl;
-	if (next_permutation(v.begin(), v.end()))
-	{
-		for (int i = 0; i < MAX; i++)
-			cout << v[i] << ' ';
-
-		cout << endl;
-	}
-
-	cout << "이전 순열은? " << endl;
-	if (prev_permutation(v.begin(), v.end()))
-	{
-		for (int i = 0; i < MAX; i++)
-			cout << v[i] << ' ';
-
-		cout << endl;
-	}
-
-	cout << "모든 순열은? " << endl;
-	sort(v.begin(), v.end());
-	do
-	{
-		for (int i = 0; i < MAX; i++)
-			cout << v[i] << ' ';
-
-		cout << endl;
-	} while (next_permutation(v.begin(), v.end()));
-
+	for (int i = 0; i < 5; i++) arr[i] = i + 1;
+	DFS(0);
 	return 0;
 }
