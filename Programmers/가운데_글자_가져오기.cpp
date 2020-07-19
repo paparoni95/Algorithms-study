@@ -1,0 +1,18 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+string solution(string s) {
+    string answer = "";
+
+    if (s.length() % 2 == 1)
+        answer += s[s.length() / 2];
+
+    else
+    {
+        answer += s[(s.length() - 1) / 2];
+        answer += s[(s.length() - 1) / 2 + 1];
+    }
+    return answer;
+}
