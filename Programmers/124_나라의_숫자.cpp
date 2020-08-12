@@ -26,7 +26,7 @@ string solution(int n) {
         }
     }
 
-    // ¿ª¼øÀ¸·Î
+    // reverse í•¨ìˆ˜ë¡œ stringì„ ì—­ìˆœìœ¼ë¡œ ë§Œë“¤ ìˆ˜ ìˆë‹¤.
     reverse(answer.begin(), answer.end());
 
     return answer;
