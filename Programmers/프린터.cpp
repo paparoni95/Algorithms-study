@@ -27,7 +27,7 @@ int solution(vector<int> priorities, int location) {
 
 	vector<pair<int, int>> printer;
 	for (int i = 0; i < priorities.size(); ++i)
-		printer.push_back({ priorities[i], i }); // (�켱����, ����)
+		printer.push_back({ priorities[i], i }); // (우선순위, 순서)
 
 	while (!printer.empty())
 	{
@@ -42,12 +42,14 @@ int solution(vector<int> priorities, int location) {
 		}
 
 		int maxPriority = findMaxPriority(printer);
+		// 출력하지 말고, 다시 뒤로 넣는 형식
 		if (current.priority < maxPriority)
 		{
 			printer.push_back({ current.priority, current.order });
 			printer.erase(printer.begin());
 		}
-		else
+		// 출력하고, 해당 순서가 내가 찾는 순서이면 출력
+		else 
 		{
 			++answer;
 			printer.erase(printer.begin());
