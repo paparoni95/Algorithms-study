@@ -2,7 +2,7 @@
 #include <queue>
 using namespace std;
 
-// ¿¬»ê ´ç ½Ã°£ º¹Àâµµ°¡ O(1)
+// ì•„ë˜ì— ë‚˜ì™€ìˆëŠ” ì—°ì‚°ë“¤ì€ ëª¨ë‘ O(1) ì‹œê°„ë³µì¡ë„
 
 int main() {
 	freopen("input.txt", "r", stdin);
