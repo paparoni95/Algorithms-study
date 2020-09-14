@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int m, n; // °¡·Î, ¼¼·Î
+int m, n; // ê°€ë¡œ,ì„¸ë¡œ
 int board[1001][1001];
 bool visited[1001][1001];
 
