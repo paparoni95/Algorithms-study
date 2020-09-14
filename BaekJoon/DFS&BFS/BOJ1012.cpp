@@ -3,7 +3,7 @@ using namespace std;
 
 int board[51][51];
 bool visited[51][51];
-int T, M, N, K; // tc, °¡·Î, ¼¼·Î, ¹èÃßÀ§Ä¡
+int T, M, N, K; // tc, ê°€ë¡œ, ì„¸ë¡œ, ë°°ì¶” ìœ„ì¹˜
 
 const int dx[] = { 0,0,-1,1 };
 const int dy[] = { 1,-1,0,0 };
