@@ -1,6 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// 2차원 배열을 회전하는 함수를 짤 수 있는지?
+// 제한이 크지 않기 때문에 가능한 모든 경우를 탐색해보는 것 = 완전탐색
+
 // 2차원 리스트 90도 회전하기
 vector<vector<int> > rotate(vector<vector<int> > a) {
 	int n = a.size();    // 행 길이 계산
