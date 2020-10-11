@@ -4,7 +4,7 @@ using namespace std;
 int l, c;
 
 bool checkingPassword(const string& password) {
-	int a = 0, b = 0; // ÀÚÀ½, ¸ğÀ½
+	int a = 0, b = 0; // ììŒ, ëª¨ìŒ
 
 	for (int i = 0; i < password.size(); i++) {
 		if (password[i] == 'a' || password[i] == 'e' || password[i] == 'i'
