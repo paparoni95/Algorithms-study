@@ -4,39 +4,39 @@
 #include <algorithm>
 using namespace std;
 
-// ÀÎÁ¢¸®½ºÆ®·Î ±¸ÇöÇÏ¸é O(V+E)
+// ì¸ì ‘ë¦¬ìŠ¤íŠ¸ë¡œ êµ¬í˜„í•˜ë©´ O(V+E)
 
 class Graph
 {
 public:
 	int n;
-	vector<vector<int>> adj; // ÀÎÁ¢ ¸®½ºÆ®
+	vector<vector<int>> adj; // ì¸ì ‘ ë¦¬ìŠ¤íŠ¸
 
-	// »ı¼ºÀÚ
+	// ìƒì„±ì
 	Graph() : n(0) { }
 	Graph(int n) : n(n)
 	{
 		adj.resize(n);
 	}
 
-	// °£¼± Ãß°¡
+	// ê°„ì„  ì¶”ê°€(ì–‘ë°©í–¥)
 	void addEdge(int u, int v)
 	{
 		adj[u].push_back(v);
 		adj[v].push_back(u);
 	}
 
-	// ¸ğµç ¸®½ºÆ®ÀÇ ÀÎÁ¢ÇÑ Á¤Á¡ ¹øÈ£ Á¤·Ä
+	// ëª¨ë“  ë¦¬ìŠ¤íŠ¸ì˜ ì¸ì ‘í•œ ì •ì  ë²ˆí˜¸ ì •ë ¬
 	void sortList()
 	{
 		for (int i = 0; i < n; i++)
 			sort(adj[i].begin(), adj[i].end());
 	}
 
-	// ³Êºñ ¿ì¼± Å½»ö
+	// ë„ˆë¹„ ìš°ì„  íƒìƒ‰
 	void bfs()
 	{
-		vector < bool> visited(n, false); // ¹æ¹® ¹è¿­
+		vector <bool> visited(n, false); // ë°©ë¬¸ ë°°ì—´
 		queue<int> q;
 		q.push(0);
 		visited[0] = true;
