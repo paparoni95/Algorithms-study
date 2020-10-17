@@ -1,4 +1,4 @@
-// ÃâÃ³ : https://blog.naver.com/kks227/220785731077
+// ì¶œì²˜ : https://blog.naver.com/kks227/220785731077
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -8,8 +8,8 @@ class Graph
 {
 public:
 	int N;
-	vector<vector<int>> adj; // ÀÎÁ¢ ¸®½ºÆ®
-	vector<bool> visited;    // ¹æ¹® ¹è¿­
+	vector<vector<int>> adj; // ì¸ì ‘ ë¦¬ìŠ¤íŠ¸
+	vector<bool> visited;    // ë°©ë¬¸ ë°°ì—´
 
 	Graph() : N(0) { }
 	Graph(int n) : N(n)
@@ -17,14 +17,14 @@ public:
 		adj.resize(N);
 		visited.resize(N);
 	}
-
+	// ì–‘ë°©í–¥ ì—°ê²°
 	void addEdge(int u, int v)
 	{
 		adj[u].push_back(v);
 		adj[v].push_back(u);
 	}
 
-	// ¸ğµç ¸®½ºÆ®ÀÇ ÀÎÁ¢ÇÑ Á¤Á¡ ¹øÈ£ Á¤·Ä
+	// ëª¨ë“  ë¦¬ìŠ¤íŠ¸ì˜ ì¸ì ‘í•œ ì •ì  ë²ˆí˜¸ ì •ë ¬
 	void sortList()
 	{
 		for (int i = 0; i < N; i++)
