@@ -5,7 +5,7 @@ int n, r, c;
 
 int z(int n, int r, int c) {
 	if (n == 0) return 0;
-	int half = 1 << (n - 1); // ÇÑ º¯ÀÇ ±æÀÌ Àı¹İ
+	int half = 1 << (n - 1); // í•œ ë³€ì˜ ê¸¸ì´ ë°˜
 	if (r < half && c < half) return z(n - 1, r, c);
 	if (r < half && c >= half) return half * half + z(n - 1, r, c - half);
 	if (r >= half && c < half) return 2 * half * half + z(n - 1, r - half, c);
