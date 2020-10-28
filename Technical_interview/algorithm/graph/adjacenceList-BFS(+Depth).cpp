@@ -1,11 +1,11 @@
-// [��ó] https://blog.naver.com/kks227/220785747864
+// [출처] https://blog.naver.com/kks227/220785747864
 #include <iostream>
 #include <vector>
 #include <queue>
 #include <algorithm>
 using namespace std;
 
-// ���� BFS Ž��������, ���̸� �˾Ƴ��� ���
+// 같은 BFS 탐색이지만, 깊이를 알아내는 방법
 
 class Graph
 {
@@ -38,12 +38,12 @@ public:
 		q.push(0);
 		visited[0] = true;
 		
-		int level = 0;
+		int level = 0; // 현재 퍼진 단계, 약간 불이 퍼져나가는 방식으로 할 수 있다.
 		while (!q.empty())
 		{
-			int qSize = q.size();
+			int qSize = q.size(); // 그 단계에서 할 수 있는 것들을 사이즈로 저장을 해놓고
 			cout << "------ level " << level << " ------" << endl;
-			for (int i = 0; i < qSize; i++)
+			for (int i = 0; i < qSize; i++) // 그것만큼 돌린다.
 			{
 				int cur = q.front();
 				q.pop();
