@@ -6,13 +6,13 @@ int main()
 {
 	int a;
 	char c;
-	printf("ÇÏ³ªÀÇ Á¤¼ö ÀÔ·Â : ");
+	printf("í•˜ë‚˜ì˜ ì •ìˆ˜ ì…ë ¥ : ");
 	scanf("%d", &a);
 	printf("%d\n", a);
 	int temp;
-	// ÇÑ ÀÚ¾¿ ¹Ş¾Æ¼­ ÆÄÀÏÀÇ ³¡ÀÌ°Å³ª °³Çà ¹®ÀÚ¸¦ ¸¸³ª¸é ÀÔ·ÂÀ» ¸ØÃß¹Ç·Î Ç×»ó ÀÔ·Â ¹öÆÛ¸¦ ºñ¿î´Ù.
+	// í•œ ìì”© ë°›ì•„ì„œ íŒŒì¼ì˜ ëì´ê±°ë‚˜ ê°œí–‰ ë¬¸ìë¥¼ ë§Œë‚˜ë©´ ì…ë ¥ì„ ë©ˆì¶”ë¯€ë¡œ í•­ìƒ ì…ë ¥ ë²„í¼ë¥¼ ë¹„ìš´ë‹¤.
 	while((temp = getchar()) != EOF && temp != '\n') { }
-	printf("ÇÏ³ªÀÇ ¹®ÀÚ ÀÔ·Â : ");
+	printf("í•˜ë‚˜ì˜ ë¬¸ì ì…ë ¥ : ");
 	scanf("%c", &c);
 	printf("%c\n", c);
 	while ((temp = getchar()) != EOF && temp != '\n') {}
@@ -21,32 +21,32 @@ int main()
 	printf("%c\n", d[4]);
 	printf("%c\n", d[8]);
 
-	printf("¹®ÀÚ¿­ ÀÔ·Â : ");
+	printf("ë¬¸ìì—´ ì…ë ¥ : ");
 	char f[100];
 	gets(f);
 	printf("%s\n", f);
 
 
-	// ¹®ÀÚ¿­ Ã³¸®¸¦ À§ÇÑ ´Ù¾çÇÑ ÇÔ¼öµé
+	// ë¬¸ìì—´ ì²˜ë¦¬ë¥¼ ìœ„í•œ ë‹¤ì–‘í•œ í•¨ìˆ˜ë“¤
 	char k1[] = "dohyun";
 	char k2[] = "dohyun";
 	char k3[] = "dohyuf";
-	printf("¹®ÀÚ¿­ÀÇ ±æÀÌ : %d\n", strlen(k1)); // 6
-	printf("µÎ ¹è¿­ÀÇ »çÀü ¼ø ºñ±³ : %d\n", strcmp(k1, k2)); // 0
-	printf("µÎ ¹è¿­ÀÇ »çÀü ¼ø ºñ±³ : %d\n", strcmp(k1, k3)); // 1
+	printf("ë¬¸ìì—´ì˜ ê¸¸ì´ : %d\n", strlen(k1)); // 6
+	printf("ë‘ ë°°ì—´ì˜ ì‚¬ì „ ìˆœ ë¹„êµ : %d\n", strcmp(k1, k2)); // 0
+	printf("ë‘ ë°°ì—´ì˜ ì‚¬ì „ ìˆœ ë¹„êµ : %d\n", strcmp(k1, k3)); // 1
 	strcpy(k3, k1);
-	printf("º¹»çµÈ ¹®ÀÚ¿­ : %s\n", k3);
-	printf("µÎ ¹è¿­ÀÇ »çÀü ¼ø ºñ±³ : %d\n", strcmp(k1, k3)); // 0
+	printf("ë³µì‚¬ëœ ë¬¸ìì—´ : %s\n", k3);
+	printf("ë‘ ë°°ì—´ì˜ ì‚¬ì „ ìˆœ ë¹„êµ : %d\n", strcmp(k1, k3)); // 0
 
 	char r1[20] = "My name is ";
 	char r2[20] = "dohyun";
-	printf("¹®ÀÚ¿­ÀÇ ±æÀÌ : %d\n", strlen(r1)); // 11
-	printf("¹®ÀÚ¿­ÀÇ ±æÀÌ : %d\n", strlen(r2)); // 6
-	strcat(r1, r2);
-	printf("¹®ÀÚ¿­ÀÇ ±æÀÌ : %d\n", strlen(r1)); // 17
+	printf("ë¬¸ìì—´ì˜ ê¸¸ì´ : %d\n", strlen(r1)); // 11(ë„ë¬¸ì ë¹¼ê³ )
+	printf("ë¬¸ìì—´ì˜ ê¸¸ì´ : %d\n", strlen(r2)); // 6(ë„ë¬¸ì ë¹¼ê³ )
+	strcat(r1, r2);   // r1 + r2
+	printf("ë¬¸ìì—´ì˜ ê¸¸ì´ : %d\n", strlen(r1)); // 17
 
 	char r3[20] = "i like that";
 	char r4[20] = "that";
-	printf("Ã£Àº ¹®ÀÚ¿­: %s\n", strstr(r3, r4));
+	printf("ì°¾ì€ ë¬¸ìì—´: %s\n", strstr(r3, r4));
 	return 0;
 }
