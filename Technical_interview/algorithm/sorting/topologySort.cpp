@@ -6,21 +6,21 @@ int indegree[100001];
 vector<int> graph[100001];
 
 vector<int> topologySort() {
-	vector<int> result;
+	vector<int> result; // ê²½ë¡œ ë°°ì—´
 	queue<int> q;
 
-	// ÁøÀÔÂ÷¼ö°¡ 0ÀÎ ³ëµå¸¦ ³Ö¾îÁØ´Ù.
+	// ì§„ì…ì°¨ìˆ˜ê°€ 0ì¸ ë…¸ë“œë¥¼ ë„£ì–´ì¤€ë‹¤.
 	for (int i = 1; i <= v; i++) {
 		if (indegree[i] == 0) {
 			q.push(i);
 		}
 	}
 
-	// ¸ğµç ³ëµå ¹İº¹
+	// ëª¨ë“  ë…¸ë“œ ë°˜ë³µ
 	for (int i = 1; i <= v; i++) {
-		// n°³ÀÇ ³ëµå¸¦ ¹æ¹®ÇÏ±â Àü¿¡ Å¥°¡ ºó´Ù¸é »çÀÌÅ¬ÀÌ ¹ß»ıÇÑ °Í
+		// nê°œì˜ ë…¸ë“œë¥¼ ë°©ë¬¸í•˜ê¸° ì „ì— íê°€ ë¹ˆë‹¤ë©´ ì‚¬ì´í´ì´ ë°œìƒí•œ ê²ƒ
 		if (q.empty()) {
-			cout << "»çÀÌÅ¬ÀÌ ¹ß»ı\n";
+			cout << "ì‚¬ì´í´ì´ ë°œìƒ\n";
 			return result;
 		}
 		int now = q.front();
