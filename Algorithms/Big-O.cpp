@@ -50,6 +50,7 @@ void printUnorderedPairs(int A[], int B[])
 }
 
 // O(AB)
+// 실상 k가 10만이라 O(KAB)가 될 수 도 있다. (영향이 없지 않으므로)
 void printUnorderedPairs(int A[], int B[])
 {
 	for(int i = 0; i < A.size(); i++)
