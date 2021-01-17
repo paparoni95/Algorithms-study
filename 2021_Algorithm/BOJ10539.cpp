@@ -8,7 +8,7 @@ int main()
 	ios_base::sync_with_stdio(0);
 	cin.tie(0);
 
-	//1000000000 10¾ï
+	//1000000000
 	int N;
 	cin >> N;
 	vector<long long> B(N, 0);
