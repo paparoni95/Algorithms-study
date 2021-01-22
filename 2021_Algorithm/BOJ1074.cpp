@@ -2,13 +2,13 @@
 #include <vector>
 using namespace std;
 
-// ÇÔ¼öÀÇ Á¤ÀÇ
+// í•¨ìˆ˜ì˜ ì •ì˜
 int func(int n, int r, int c)
 {
 	if (n == 0) return 0; // base condition
 	int half = 1 << (n - 1);
 
-	// Àç±Í½Ä
+	// ì¬ê·€
 	if (r < half && c < half) return func(n - 1, r, c);
 	if (r < half && c >= half) return half * half + func(n - 1, r, c - half);
 	if (r >= half && c < half) return 2 * half * half + func(n - 1, r - half, c);
