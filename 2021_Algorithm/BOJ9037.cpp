@@ -46,8 +46,7 @@ int main()
 				cout << cycle << '\n';
 				break;
 			}
-
-			// 사탕을 절반으로 줄이고,
+			
 			vector<int> v2(N, 0);
 			for (int i = 0; i < N; i++)
 			{
