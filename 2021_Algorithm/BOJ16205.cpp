@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <cctype> // isupper, islower, toupper, tolower ÇÔ¼ö »ç¿ë
+#include <cctype> // isupper, islower, toupper, tolower í•¨ìˆ˜ 
 using namespace std;
 
 int n;
