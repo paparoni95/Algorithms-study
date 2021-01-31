@@ -44,10 +44,10 @@ int main()
 
 	cin >> ML >> MR >> TL >> TR;
 
-	// �μ�
+	// 민성 게임
 	mGame(ML);
 	mGame(MR);
-	// �°�
+	// 태경 게임
 	tGame(TL);
 	tGame(TR);
 
