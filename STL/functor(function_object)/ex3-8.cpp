@@ -1,8 +1,8 @@
 #include <iostream>
-#include <functional> // plus<>, minus<> Çì´õ
+#include <functional> // plus<>, minus<> í—¤ë”
 using namespace std;
 
-// plus, minus ÇÔ¼ö °´Ã¼ ±¸Çö
+// plus, minus í•¨ìˆ˜ ê°ì²´ êµ¬í˜„
 
 struct Plus
 {
