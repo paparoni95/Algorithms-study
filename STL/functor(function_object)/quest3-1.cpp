@@ -25,9 +25,9 @@ int main()
 	Adder add;
 
 	if (cmp(10, 20))
-		cout << "°°´Ù!" << endl;
+		cout << "ê°™ë‹¤!" << endl;
 	else
-		cout << "´Ù¸£´Ù!" << endl;
+		cout << "ë‹¤ë¥´ë‹¤!" << endl;
 
 	int sum = add(10, 20);
 	cout << "sum= " << sum << endl;
