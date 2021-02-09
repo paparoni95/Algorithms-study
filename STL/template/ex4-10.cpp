@@ -1,4 +1,4 @@
-/* Á¤¼öÇü Array Å¬·¡½º */
+/* ì •ìˆ˜í˜• Array í´ë˜ìŠ¤ */
 #include <iostream>
 using namespace std;
 
