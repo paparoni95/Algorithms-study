@@ -1,4 +1,4 @@
-// даевюлЁй ╠Б╨╩ гр╢Г╠Б
+// Л╩╗М┘▄Л²╢К└┬ Й╦╟КЁ╦ М∙═К▀╧Й╦╟
 #include <iostream>
 #include <vector>
 #include <set>
