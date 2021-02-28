@@ -3,7 +3,7 @@
 #include <algorithm>
 using namespace std;
 
-// next_permutationÀ» ÀÌ¿ëÇØ Á¶ÇÕ ¸¸µé±â
+// next_permutationì„ ì´ìš©í•´ ì¡°í•© ë§Œë“¤ê¸°
 
 int main()
 {
@@ -13,13 +13,13 @@ int main()
 
 	// 9C7
 	for (int i = 0; i < 2; i++) comb.push_back(0); 
-	for (int i = 0; i < 7; i++) comb.push_back(1); // ¼±ÅÃÇÏ´Â ¾ÖµéÀ» 1·Î ³Ö¾îÁØ´Ù.
+	for (int i = 0; i < 7; i++) comb.push_back(1); // ì„ íƒí•˜ëŠ” ì• ë“¤ì„ 1ë¡œ ë„£ì–´ì¤€ë‹¤.
 
 	do
 	{
 		for (int i = 0; i < 9; i++)
 		{
-			if (comb[i]) cout << v[i] << ' ';
+			if (comb[i]) cout << v[i] << ' '; // 1ì¸ ì• ë“¤ë§Œ ê³¨ë¼ ì¶œë ¥í•œë‹¤.
 		}
 		cout << '\n';
 	} while (next_permutation(comb.begin(), comb.end()));
