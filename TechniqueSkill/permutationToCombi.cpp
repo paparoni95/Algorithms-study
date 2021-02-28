@@ -8,7 +8,7 @@ using namespace std;
 int main()
 {
 	vector<int> v(9);
-	for (int i = 0; i < 9; i++) cin >> v[i];
+	for (int i = 0; i < 9; i++) cin >> v[i]; // 9C7 (9개중에서 7개를 뽑아 쓰겠다고 하면)
 	vector<int> comb;
 
 	// 9C7
