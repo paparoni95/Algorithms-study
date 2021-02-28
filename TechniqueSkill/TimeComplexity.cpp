@@ -69,7 +69,7 @@ while (digit != 0)
 	digit = digit / 2;
 }
 
-// O(N)
+// O(N), 1중 FOR
 for (int n : arr)
 {
 	cout << n << ' ';
