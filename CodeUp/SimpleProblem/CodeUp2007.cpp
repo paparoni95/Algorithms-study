@@ -27,8 +27,8 @@ int main()
 	cin >> n;
 	for (int i = 0; i < n; i++) cin >> a[i];
 
-	if (isAscending()) cout << "¿À¸§Â÷¼ø";
-	else if (isDescending()) cout << "³»¸²Â÷¼ø";
-	else cout << "¼¯ÀÓ";
+	if (isAscending()) cout << "ì˜¤ë¦„ì°¨ìˆœ";
+	else if (isDescending()) cout << "ë‚´ë¦¼ì°¨ìˆœ";
+	else cout << "ì„žìž„";
 	return 0;
 }
