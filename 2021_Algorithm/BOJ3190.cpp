@@ -5,7 +5,7 @@ using namespace std;
 
 int N, K, L;
 int a[101][101];
-const int dx[] = { 0,0,1,-1 }; // ©Л, аб, го, ╩С
+const int dx[] = { 0,0,1,-1 }; // Л ╟, Л╒▄, Л┐│, 
 const int dy[] = { 1,-1,0,0 };
 
 vector<pair<int, char>> v;
