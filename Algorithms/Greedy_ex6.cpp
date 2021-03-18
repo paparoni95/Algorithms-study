@@ -2,7 +2,6 @@
 #include <string>
 using namespace std;
 
-// 곱하기 혹은 더하기]
 int main()
 {
 	string s;
