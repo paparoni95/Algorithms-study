@@ -3,7 +3,6 @@
 #include <map>
 using namespace std;
 
-// 완주하지 못한 선수
 string solution(vector<string> participant, vector<string> completion) {
     string answer = "";
 
