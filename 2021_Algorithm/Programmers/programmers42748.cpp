@@ -3,7 +3,6 @@
 #include <algorithm>
 using namespace std;
 
-// K¹øÂ°¼ö
 vector<int> solution(vector<int> array, vector<vector<int>> commands) {
     vector<int> answer;
 
