@@ -6,7 +6,7 @@ using namespace std;
 vector<int> v1 = { 1,2,3,4,5 };
 vector<int> v2 = { 2,1,2,3,2,4,2,5 };
 vector<int> v3 = { 3,3,1,1,2,2,4,4,5,5 };
-// 모의고사
+
 vector<int> solution(vector<int> answers) {
     vector<int> answer;
     vector<int> cnt(3, 0);
