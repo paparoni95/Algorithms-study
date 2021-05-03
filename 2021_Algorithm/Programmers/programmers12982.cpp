@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 using namespace std;
-// 예산(정렬)
+
 int solution(vector<int> d, int budget) {
     int answer = 0;
 
