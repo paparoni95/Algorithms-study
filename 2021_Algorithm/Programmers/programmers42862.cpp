@@ -1,7 +1,7 @@
 #include <string>
 #include <vector>
 using namespace std;
-// 체육복(그리디)
+
 int solution(int n, vector<int> lost, vector<int> reserve) {
     int answer = 0;
 
