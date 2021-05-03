@@ -3,7 +3,6 @@
 #include <iostream>
 using namespace std;
 
-// 신규 아이디 추천(문자열)
 string solution(string new_id) {
     string answer = "";
 
