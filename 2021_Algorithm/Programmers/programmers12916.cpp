@@ -1,0 +1,15 @@
+#include <string>
+#include <iostream>
+using namespace std;
+
+bool solution(string s)
+{
+    int y = 0;
+    int p = 0;
+    for (int i = 0; i < s.size(); i++) {
+        if (s[i] == 'y' || s[i] == 'Y') y++;
+        else if (s[i] == 'p' || s[i] == 'P') p++;
+    }
+
+    return (y == p) ? true : false;
+}
