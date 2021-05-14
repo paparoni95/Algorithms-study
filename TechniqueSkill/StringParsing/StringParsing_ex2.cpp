@@ -10,7 +10,7 @@ int main()
 	istringstream ss(str);
 	string buffer;
 	vector<string> v;
-	//' 'À» ±¸ºĞÀÚ·Î splitÇØ¼­ vector¿¡ ³Ö±â
+	//' 'ì„ êµ¬ë¶„ìë¡œ splití•´ì„œ vectorì— ë„£ê¸°
 	while (getline(ss, buffer, ' '))
 	{
 		v.push_back(buffer);
