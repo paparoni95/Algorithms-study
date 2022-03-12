@@ -31,3 +31,19 @@ DFS를 꼭 그래프 탐색으로만 분류되는 것이 아니라, 어떤 모�
 DFS로 접근할 시 갈 수 있을 때까지 진행하다가 더이상 진행할 수 없을때 뒤로 후진하여 다시 탐색하게 된다.
 
 ex) 비밀번호 4자리 뚫기, 조합, 순열, DFS, BFS etc...
+
+## 구현
+```cpp
+void dfs(int cur)
+{
+  visited[cur] = true;
+  for(int i = 0; i < graph[cur].size(); i++)
+  {
+    int next = graph[cur][i];
+    if(!visited[next])
+    {
+      dfs(next);
+    }
+  }
+}
+```
